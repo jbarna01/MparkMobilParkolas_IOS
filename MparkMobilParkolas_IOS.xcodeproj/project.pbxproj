@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		39BFEBADDCE709C40BAED61E /* Pods_MparkMobilParkolas_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA800EB84B306F10D0983964 /* Pods_MparkMobilParkolas_IOS.framework */; };
 		843652DB242EB6EE003D48EC /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843652DA242EB6EE003D48EC /* RegistrationResponse.swift */; };
-		843652DD242EB703003D48EC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843652DC242EB703003D48EC /* BaseResponse.swift */; };
+		845B10CE2433E2FD0041B1F9 /* ParkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B10CD2433E2FD0041B1F9 /* ParkingController.swift */; };
+		845B10D02433E3200041B1F9 /* ParkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B10CF2433E3200041B1F9 /* ParkingService.swift */; };
 		846F965A24295A1500936977 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F965924295A1500936977 /* AppDelegate.swift */; };
 		846F965C24295A1500936977 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F965B24295A1500936977 /* SceneDelegate.swift */; };
 		846F965E24295A1500936977 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F965D24295A1500936977 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 		846F966324295A1600936977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846F966224295A1600936977 /* Assets.xcassets */; };
 		846F966624295A1600936977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846F966424295A1600936977 /* LaunchScreen.storyboard */; };
 		8471AB36242D5645000AE9E2 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471AB35242D5645000AE9E2 /* RegistrationService.swift */; };
+		84BA2CFF24353CD100823625 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA2CFE24353CD100823625 /* TabBarController.swift */; };
+		84EBE08E243686FA0008369A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBE08C243686FA0008369A /* AlertController.swift */; };
+		84EBE08F243686FA0008369A /* AlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EBE08D243686FA0008369A /* AlertController.xib */; };
 		84F34166242A9E4200B1B50E /* Avenir Next.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 84F34165242A9DD700B1B50E /* Avenir Next.ttc */; };
 		84F3416C242AAD3000B1B50E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3416B242AAD3000B1B50E /* Utils.swift */; };
 		84F3416E242AAD4400B1B50E /* Konstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3416D242AAD4400B1B50E /* Konstans.swift */; };
@@ -26,7 +30,8 @@
 
 /* Begin PBXFileReference section */
 		843652DA242EB6EE003D48EC /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
-		843652DC242EB703003D48EC /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		845B10CD2433E2FD0041B1F9 /* ParkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingController.swift; sourceTree = "<group>"; };
+		845B10CF2433E3200041B1F9 /* ParkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingService.swift; sourceTree = "<group>"; };
 		846F965624295A1500936977 /* MparkMobilParkolas_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MparkMobilParkolas_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846F965924295A1500936977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846F965B24295A1500936977 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +41,9 @@
 		846F966524295A1600936977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		846F966724295A1600936977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8471AB35242D5645000AE9E2 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		84BA2CFE24353CD100823625 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		84EBE08C243686FA0008369A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		84EBE08D243686FA0008369A /* AlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertController.xib; sourceTree = "<group>"; };
 		84F34165242A9DD700B1B50E /* Avenir Next.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir Next.ttc"; sourceTree = "<group>"; };
 		84F3416B242AAD3000B1B50E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		84F3416D242AAD4400B1B50E /* Konstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Konstans.swift; sourceTree = "<group>"; };
@@ -62,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				843652DA242EB6EE003D48EC /* RegistrationResponse.swift */,
-				843652DC242EB703003D48EC /* BaseResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,8 +130,10 @@
 		84F34168242AACB700B1B50E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84BA2CFE24353CD100823625 /* TabBarController.swift */,
 				846F965D24295A1500936977 /* ViewController.swift */,
 				84F3416F242AB19500B1B50E /* RegistrationController.swift */,
+				845B10CD2433E2FD0041B1F9 /* ParkingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				8471AB35242D5645000AE9E2 /* RegistrationService.swift */,
+				845B10CF2433E3200041B1F9 /* ParkingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -142,6 +152,8 @@
 			children = (
 				84F3416B242AAD3000B1B50E /* Utils.swift */,
 				84F3416D242AAD4400B1B50E /* Konstans.swift */,
+				84EBE08C243686FA0008369A /* AlertController.swift */,
+				84EBE08D243686FA0008369A /* AlertController.xib */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -224,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F34166242A9E4200B1B50E /* Avenir Next.ttc in Resources */,
+				84EBE08F243686FA0008369A /* AlertController.xib in Resources */,
 				846F966624295A1600936977 /* LaunchScreen.storyboard in Resources */,
 				846F966324295A1600936977 /* Assets.xcassets in Resources */,
 				846F966124295A1500936977 /* Main.storyboard in Resources */,
@@ -279,15 +292,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EBE08E243686FA0008369A /* AlertController.swift in Sources */,
+				845B10D02433E3200041B1F9 /* ParkingService.swift in Sources */,
 				8471AB36242D5645000AE9E2 /* RegistrationService.swift in Sources */,
 				84F34172242AB87400B1B50E /* Reachability.swift in Sources */,
 				84F3416E242AAD4400B1B50E /* Konstans.swift in Sources */,
 				843652DB242EB6EE003D48EC /* RegistrationResponse.swift in Sources */,
 				846F965E24295A1500936977 /* ViewController.swift in Sources */,
-				843652DD242EB703003D48EC /* BaseResponse.swift in Sources */,
 				846F965A24295A1500936977 /* AppDelegate.swift in Sources */,
 				846F965C24295A1500936977 /* SceneDelegate.swift in Sources */,
 				84F34170242AB19500B1B50E /* RegistrationController.swift in Sources */,
+				84BA2CFF24353CD100823625 /* TabBarController.swift in Sources */,
+				845B10CE2433E2FD0041B1F9 /* ParkingController.swift in Sources */,
 				84F3416C242AAD3000B1B50E /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

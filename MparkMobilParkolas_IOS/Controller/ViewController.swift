@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             let isRegistration = defaults.integer(forKey: "registration");
 
         // Megnézzük, hogy a készülék regisztrált-e. isRegistration = 1 regisztrált készülék esetén.
-        if isRegistration != 1 {
+        if isRegistration == 1 {
             self.performSegue(withIdentifier: Konst.kapcsolatok.startToRegistration, sender: self);
             } else {
             self.performSegue(withIdentifier: Konst.kapcsolatok.startToParking, sender: self);

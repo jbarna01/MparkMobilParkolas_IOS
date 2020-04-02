@@ -9,6 +9,6 @@
 import Foundation
 
 class BaseResponse {
-    let success: String = "";
-    let error: String = "";
+    let success: Bool;
+    let error: Int = 0;
 }

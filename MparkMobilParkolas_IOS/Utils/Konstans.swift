@@ -8,9 +8,9 @@
 
 struct Konst {
     struct enviroment {
-        static let host: String = "teszt.moimo.hu";
+        static let host: String = "app.moimo.hu/resources";
         static let protokol: String = "http";
-        static let registrationUrl = "/resources/phones/register";
+        static let registrationUrl = "/phones/register";
     }
     struct szoveg {
         static let reg_tajekoztato: String = "SMS üzenetben küldtük Önnek a regisztrációs kódot. Kérjük írja be, és nyomjon a Belépés gombra!"
@@ -57,6 +57,11 @@ struct Konst {
     struct kapcsolatok {
         static let startToRegistration = "startToRegistration";
         static let startToParking = "startToParking";
+    }
+    struct tabbar {
+        static let parkolok = 0;
+        static let parkolasom = 1;
+        static let profilom = 2;
     }
     
 }

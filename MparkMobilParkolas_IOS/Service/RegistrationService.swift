@@ -31,9 +31,9 @@ class RegistrationService {
     
         // Lekérdezi, hogy létezik-e a regisztrációs kód.
         // Amennyiben létezik, úgy visszakapjuk a regisztráció kód mellett a kódhoz tartozó telefonszámot is.
-        func checkApiKey(apiKey: String) -> (phoneNumber: String, JSONresult: String) {
+        func checkApiKey(apiKey: String) -> (phoneNumber: String, responseData: String) {
             var phoneNumber: String = "";
-            var JSONresult: String = "";
+            var responseData: String = "";
             let semaphore = DispatchSemaphore(value: 0);
             // Le kell kérdezni az ügyfél adatait
             URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
@@ -46,76 +46,47 @@ class RegistrationService {
             
             let session = URLSession(configuration: .default)
             
-            let task = session.dataTask(with: request as URLRequest, completionHandler: handle(data: response: error:))
-            
-            task.resume()
-/*
-            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-                guard error == nil && data != nil else
-                {
-                    print("Hiba");
-                    return;
+            let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+                if error != nil {
+                    print (error!)
+                    responseData = "-9999";
+                    //phoneNumber = "";
+                    //return (phoneNumber, responseData);
                 }
-                let httpStatus = response as? HTTPURLResponse
                 
-                if httpStatus!.statusCode == 200
-                {
-                    if data?.count != 0
-                    {
-                        //self.parseJSON(registrationResponse: data!)
-                        let jsonString = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
-                        print (jsonString)
-                        if ((jsonString["result"]) != nil) {
-                            JSONresult = (jsonString["result"] as? String)!;
-                            switch JSONresult {
-                                case "OK":
-                                    // Sikeres hívás, lekérdezzük a telefonszámt.
-                                    phoneNumber = (jsonString["phone"] as! String);
-                                default:
-                                    // Egyéb hiba
-                                    phoneNumber = "";
-                            }
+                if let safeData = data {
+                    let registrationResponseData = self.parseJSON(registrationResponse: safeData);
+                    if (registrationResponseData.success) {
+                        responseData = registrationResponseData.result
+                        switch responseData {
+                        case "OK":
+                            phoneNumber = registrationResponseData.phone!;
+                        default:
+                            phoneNumber = "";
                         }
                     } else {
-                        phoneNumber = "";
-                        JSONresult = "";
+                        // Hiba van nem sikerült a művelet
                     }
-                    
-    //            } else {
-    //                self.displayAlertMessage(alertTitle: "Hiba!", userMessage: self.utils.msg_1002)
                 }
                 semaphore.signal();
             }
- */
-  //          task.resume()
+            
+            task.resume()
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-            return (phoneNumber, JSONresult);
+            return (phoneNumber, responseData);
         }
         
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if error != nil {
-            print (error!)
-            return
-        }
-        
-        if let safeData = data {
-            let dataString = String(data: safeData, encoding: .utf8)
-            print (dataString)
-        }
-    }
     
-    func parseJSON(registrationResponse: Data) {
-        print (registrationResponse);
+    func parseJSON(registrationResponse: Data) -> RegistrationResponse {
+        //print (registrationResponse);
         let decoder = JSONDecoder();
+        var decodedData = RegistrationResponse(phone: nil, result: "", success: false, error: nil);
         do {
-            let decodedData = try decoder.decode(RegistrationResponse.self, from: registrationResponse);
-            print (decodedData.phone);
-            print (decodedData.error);
-            print (decodedData.success);
-            print (decodedData.result);
+            decodedData = try decoder.decode(RegistrationResponse.self, from: registrationResponse)
         } catch {
-            print (error)
+            decodedData.error = Konst.error.err_9999;
         }
+        return decodedData;
     }
     
         // A hívás url-jét állítja össze, amihez hozzáadja a paraméterben kapott értéket is.

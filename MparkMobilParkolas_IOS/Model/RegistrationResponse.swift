@@ -8,7 +8,9 @@
 
 import Foundation
 
-class RegistrationResponse: BaseResponse, Decodable {
-    let phone: String = "";
-    let result: String = "";
+struct RegistrationResponse: Decodable {
+    var phone: String?;
+    var result: String;
+    var success: Bool;
+    var error: String?;
 }

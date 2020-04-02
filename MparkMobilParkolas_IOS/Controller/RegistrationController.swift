@@ -48,7 +48,7 @@ class RegistrationController: UIViewController {
     func apiKeyRegistration(_ apiKey: String) {
         let apiKeyResultData = registrationService.checkApiKey(apiKey: apiKey)
         
-        switch apiKeyResultData.JSONresult {
+        switch apiKeyResultData.responseData {
         case "OK":
             // Mentjük a regisztrációs adatokat.
             // A regisztrációs számot
@@ -61,7 +61,8 @@ class RegistrationController: UIViewController {
             
             // Átírányitjuk a kezdő oldalra
             // A kezdőoldal fog a parkolás indítás oldalra irányítani.
-            self.performSegue(withIdentifier: "registrationGoMainView", sender: self );
+            self.dismiss(animated: true, completion: nil)
+            //self.performSegue(withIdentifier: "registrationGoMainView", sender: self );
         case "-1001":
             // Mobil alkalmazás használata nem engedélyezett
             self.txtRegisztraciosKod.text = "";
@@ -83,7 +84,6 @@ class RegistrationController: UIViewController {
     
     func displayAlertMessage(alertTitle: String, userMessage: String) {
         let myAlert = UIAlertController(title: alertTitle, message: userMessage, preferredStyle: UIAlertController.Style.alert);
-        
         let okAction = UIAlertAction(title:"Ok", style: UIAlertAction.Style.default, handler: nil);
         
         myAlert.addAction(okAction);
