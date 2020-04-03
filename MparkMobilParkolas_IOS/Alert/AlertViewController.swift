@@ -1,31 +1,22 @@
 //
-//  AlertController.swift
+//  AlertViewController.swift
 //  MparkMobilParkolas_IOS
 //
-//  Created by Administrator on 2020. 04. 02..
+//  Created by Administrator on 2020. 04. 03..
 //  Copyright © 2020. BJ. All rights reserved.
 //
 
 import UIKit
 
-protocol PopupDeleget {
-    func closeTapped()
-}
+class AlertViewController: UIViewController {
 
-class AlertController: UIViewController {
-
-    var closePopup: PopupDeleget?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func btnRendben(_ sender: Any) {
-        self.closePopup?.closeTapped();
-    }
     
+
     /*
     // MARK: - Navigation
 

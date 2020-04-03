@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="65O-6C-7nI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert Controller-->
+        <scene sceneID="N6k-24-3Fu">
+            <objects>
+                <viewController storyboardIdentifier="AlertVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="65O-6C-7nI" customClass="AlertController" customModule="MparkMobilParkolas_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NPJ-e5-kyR" customClass="Aler">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzh-ZX-yeJ">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertbox" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-gl-W1y">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiba" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-fV-efe">
+                                        <rect key="frame" x="8" y="20" width="284" height="33"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                        <color key="textColor" name="SzovegSzinek"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lsok szoveg Lsok szoveg Lsok szoveg Lsok szoveg Lsok szoveg Lsok szoveg Lsok szoveg Lsok szoveg Lsok sz" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtI-uy-WEN">
+                                        <rect key="frame" x="20" y="73" width="260" height="87.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                        <color key="textColor" name="SzovegSzinek"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56s-2w-Vjq">
+                                        <rect key="frame" x="90" y="233" width="121" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="56s-2w-Vjq" secondAttribute="height" multiplier="121:37" id="V2X-Gh-hDf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                        <state key="normal" title="Ok" backgroundImage="pirosgomb">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnOk:" destination="65O-6C-7nI" eventType="touchUpInside" id="b9F-3G-yhz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5Ce-fV-efe" firstAttribute="leading" secondItem="uzh-ZX-yeJ" secondAttribute="leading" constant="8" id="3RU-ct-XAK"/>
+                                    <constraint firstItem="cYf-gl-W1y" firstAttribute="top" secondItem="uzh-ZX-yeJ" secondAttribute="top" id="5JG-kT-6mH"/>
+                                    <constraint firstItem="FtI-uy-WEN" firstAttribute="top" secondItem="5Ce-fV-efe" secondAttribute="bottom" constant="20" id="71x-ow-kUv"/>
+                                    <constraint firstAttribute="height" constant="300" id="7Qo-iY-Z60"/>
+                                    <constraint firstItem="cYf-gl-W1y" firstAttribute="leading" secondItem="uzh-ZX-yeJ" secondAttribute="leading" id="8zK-lX-puH"/>
+                                    <constraint firstItem="56s-2w-Vjq" firstAttribute="leading" secondItem="uzh-ZX-yeJ" secondAttribute="leading" constant="90" id="9Hh-84-p4g"/>
+                                    <constraint firstAttribute="width" constant="300" id="Cww-ip-LXY"/>
+                                    <constraint firstAttribute="trailing" secondItem="56s-2w-Vjq" secondAttribute="trailing" constant="89" id="EQc-Ez-3Wa"/>
+                                    <constraint firstAttribute="bottom" secondItem="56s-2w-Vjq" secondAttribute="bottom" constant="30" id="G2k-HH-SSx"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Ce-fV-efe" secondAttribute="trailing" constant="8" id="Mvv-km-EpE"/>
+                                    <constraint firstItem="5Ce-fV-efe" firstAttribute="top" secondItem="uzh-ZX-yeJ" secondAttribute="top" constant="20" id="TDX-cv-fSo"/>
+                                    <constraint firstItem="FtI-uy-WEN" firstAttribute="leading" secondItem="uzh-ZX-yeJ" secondAttribute="leading" constant="20" id="bI3-uC-idN"/>
+                                    <constraint firstAttribute="trailing" secondItem="cYf-gl-W1y" secondAttribute="trailing" id="czS-5L-okD"/>
+                                    <constraint firstAttribute="bottom" secondItem="cYf-gl-W1y" secondAttribute="bottom" id="ffm-NS-wia"/>
+                                    <constraint firstAttribute="trailing" secondItem="FtI-uy-WEN" secondAttribute="trailing" constant="20" id="sgQ-bf-7fy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uzh-ZX-yeJ" firstAttribute="centerY" secondItem="NPJ-e5-kyR" secondAttribute="centerY" id="W11-n7-z7U"/>
+                            <constraint firstItem="uzh-ZX-yeJ" firstAttribute="centerX" secondItem="NPJ-e5-kyR" secondAttribute="centerX" id="xMm-qK-5Ye"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SoJ-ar-JYF"/>
+                    </view>
+                    <connections>
+                        <outlet property="labelSzoveg" destination="FtI-uy-WEN" id="7A4-4E-Q9e"/>
+                        <outlet property="labelTitle" destination="5Ce-fV-efe" id="7e4-h1-wPr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Htn-fL-ZLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-149.27536231884059" y="73.660714285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="alertbox" width="75" height="69"/>
+        <image name="pirosgomb" width="28" height="10"/>
+        <namedColor name="SzovegSzinek">
+            <color red="0.16470588235294117" green="0.21568627450980393" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,5 +1,5 @@
 //
-//  AlertController.swift
+//  AlertPopupController.swift
 //  MparkMobilParkolas_IOS
 //
 //  Created by Administrator on 2020. 04. 02..
@@ -9,10 +9,10 @@
 import UIKit
 
 protocol PopupDeleget {
-    func closeTapped()
+    func closeTapped();
 }
 
-class AlertController: UIViewController {
+class AlertPopupController: UIViewController {
 
     var closePopup: PopupDeleget?
     
@@ -22,10 +22,12 @@ class AlertController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func btnRendben(_ sender: Any) {
+
+    @IBAction func btnBezar(_ sender: Any) {
+        
         self.closePopup?.closeTapped();
+        
     }
-    
     /*
     // MARK: - Navigation
 

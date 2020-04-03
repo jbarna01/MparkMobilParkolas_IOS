@@ -15,6 +15,7 @@ class RegistrationController: UIViewController {
     
     let utils = Utils();
     let registrationService = RegistrationService();
+    let alertService = AlertService();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,6 @@ class RegistrationController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
     @IBAction func btnBelepes(_ sender: UIButton) {
 //        Leellenőrizzük van-e Internet kapcsolat
 //        if Reachability.isConnectedToNetwork() == true {
@@ -37,9 +37,11 @@ class RegistrationController: UIViewController {
         let result: String = registrationService.apiKeyEllenorzese(apiKey);
         switch result {
         case "msg_002":
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.info.info_002);
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.info.info_002 )
+            present(alertVC, animated: true);
         case "msg_003":
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.info.info_003);
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.info.info_003 )
+            present(alertVC, animated: true);
         default:
             apiKeyRegistration(apiKey)
         }
@@ -62,33 +64,27 @@ class RegistrationController: UIViewController {
             // Átírányitjuk a kezdő oldalra
             // A kezdőoldal fog a parkolás indítás oldalra irányítani.
             self.dismiss(animated: true, completion: nil)
-            //self.performSegue(withIdentifier: "registrationGoMainView", sender: self );
         case "-1001":
             // Mobil alkalmazás használata nem engedélyezett
             self.txtRegisztraciosKod.text = "";
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.error.err_1001)
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.error.err_1001)
+            present(alertVC, animated: true);
         case "-2001":
             // Hibás regisztrációs kód
             self.txtRegisztraciosKod.text = "";
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.error.err_2001)
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.error.err_2001)
+            present(alertVC, animated: true);
         case "-2002":
             // Mobil alkalmazás regisztrációja sikertelen
             self.txtRegisztraciosKod.text = "";
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.error.err_2002)
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.error.err_2002)
+            present(alertVC, animated: true);
         default:
             // Egyéb hiba
             self.txtRegisztraciosKod.text = "";
-            displayAlertMessage(alertTitle: "Hiba!", userMessage: Konst.error.err_9999)
+            let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.error.err_9999)
+            present(alertVC, animated: true);
         } // Switch vége
-    }
-    
-    func displayAlertMessage(alertTitle: String, userMessage: String) {
-        let myAlert = UIAlertController(title: alertTitle, message: userMessage, preferredStyle: UIAlertController.Style.alert);
-        let okAction = UIAlertAction(title:"Ok", style: UIAlertAction.Style.default, handler: nil);
-        
-        myAlert.addAction(okAction);
-        present(myAlert, animated: true, completion: nil);
-
     }
     
     // Virtuális billentyűzet megjelenítése a text mezőbe történő kattintáskor

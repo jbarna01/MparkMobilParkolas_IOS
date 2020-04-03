@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertController" customModule="MparkMobilParkolas_IOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertPopupController" customModule="MparkMobilParkolas_IOS" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,27 +17,31 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertbox" translatesAutoresizingMaskIntoConstraints="NO" id="rjS-y2-iSB">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertbox" translatesAutoresizingMaskIntoConstraints="NO" id="Q7x-x4-Ok8">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBC-ux-QXE">
-                    <rect key="frame" x="94" y="248" width="113" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
-                    <state key="normal" title="Rendben" backgroundImage="pirosgomb">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnR-WR-1Vg">
+                    <rect key="frame" x="88" y="232" width="124" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rnR-WR-1Vg" secondAttribute="height" multiplier="62:19" id="FQh-MP-bSY"/>
+                    </constraints>
+                    <state key="normal" title="Bezár" backgroundImage="pirosgomb">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="btnRendben:" destination="-1" eventType="touchUpInside" id="DKB-Fa-7oA"/>
+                        <action selector="btnBezar:" destination="-1" eventType="touchUpInside" id="0Hm-ez-vBJ"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="rjS-y2-iSB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1J7-vR-gb4"/>
-                <constraint firstAttribute="trailing" secondItem="rjS-y2-iSB" secondAttribute="trailing" id="8lF-TG-3nu"/>
-                <constraint firstAttribute="bottom" secondItem="rjS-y2-iSB" secondAttribute="bottom" id="Ghe-6a-XVN"/>
-                <constraint firstItem="rjS-y2-iSB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="att-lV-zj7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rnR-WR-1Vg" secondAttribute="bottom" constant="30" id="ADV-uN-biz"/>
+                <constraint firstAttribute="trailing" secondItem="Q7x-x4-Ok8" secondAttribute="trailing" id="GMc-5u-66F"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rnR-WR-1Vg" secondAttribute="trailing" constant="88" id="IcA-6I-Xoa"/>
+                <constraint firstItem="Q7x-x4-Ok8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XA9-zR-3Mc"/>
+                <constraint firstItem="Q7x-x4-Ok8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cG8-0j-M3N"/>
+                <constraint firstItem="rnR-WR-1Vg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="88" id="mV2-KU-IPQ"/>
+                <constraint firstAttribute="bottom" secondItem="Q7x-x4-Ok8" secondAttribute="bottom" id="xUY-E3-azK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
