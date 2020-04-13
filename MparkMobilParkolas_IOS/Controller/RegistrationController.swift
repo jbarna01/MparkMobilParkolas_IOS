@@ -13,7 +13,6 @@ class RegistrationController: UIViewController {
     @IBOutlet weak var labelSmsSzoveg: UILabel!
     @IBOutlet weak var txtRegisztraciosKod: UITextField!
     
-    let utils = Utils();
     let registrationService = RegistrationService();
     let alertService = AlertService();
     

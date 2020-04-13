@@ -28,5 +28,6 @@ class AlertController: UIViewController {
     
     @IBAction func btnOk(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);
+        
     }
 }

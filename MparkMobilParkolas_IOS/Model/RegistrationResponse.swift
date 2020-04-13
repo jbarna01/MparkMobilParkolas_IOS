@@ -11,6 +11,4 @@ import Foundation
 struct RegistrationResponse: Decodable {
     var phone: String?;
     var result: String;
-    var success: Bool;
-    var error: String?;
 }

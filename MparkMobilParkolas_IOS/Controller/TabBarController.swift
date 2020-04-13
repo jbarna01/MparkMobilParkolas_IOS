@@ -10,6 +10,9 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+    var phoneNumber: String = "";
+    var aktPlate: String = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,25 +21,38 @@ class TabBarController: UITabBarController {
         // Ezek függvényében tiljuk a gombokat
         
         if ( self.futParkolas() ) {
-            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolok] as? UITabBarItem {
-                tabBarItem.isEnabled = false;
-            }
-            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.profilom] as? UITabBarItem {
-                tabBarItem.isEnabled = false;
-            }
+//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolok] as? UITabBarItem {
+//                tabBarItem.isEnabled = false;
+//            }
+//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.profilom] as? UITabBarItem {
+//                tabBarItem.isEnabled = false;
+//            }
             self.selectedIndex = Konst.tabbar.parkolasom;
         } else {
-            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {
-                tabBarItem.isEnabled = false;
-            }
+//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {
+//                tabBarItem.isEnabled = false;
+//            }
             self.selectedIndex = Konst.tabbar.parkolok;
         }
     }
     
     func futParkolas() -> Bool {
+        //TODO ezt rendezni kell
         return false
     }
     
+    
+    func tabBarBeallitas(parkolokBool: Bool, parkolasomBool: Bool, ProfilomBool: Bool) {
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolok] as? UITabBarItem {
+            tabBarItem.isEnabled = parkolokBool;
+        }
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {
+            tabBarItem.isEnabled = parkolasomBool;
+        }
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.profilom] as? UITabBarItem {
+            tabBarItem.isEnabled = ProfilomBool;
+        }
+    }
     /*
     // MARK: - Navigation
 
