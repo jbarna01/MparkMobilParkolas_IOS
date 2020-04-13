@@ -40,4 +40,8 @@ class Utils {
        }
         return convertPhoneNumber
     }
+    
+    func parkolasiIdoKiszamolasa(date: String) -> String {
+        return "00:15:12";
+    }
 }

@@ -196,6 +196,8 @@
                         <color key="badgeColor" name="Piros"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="btnFrissites" destination="352-HH-L4g" id="t9O-yc-Wfr"/>
+                        <outlet property="btnLeallitas" destination="Ahw-v3-cbD" id="zEq-Bj-T9S"/>
                         <outlet property="labelElerhetoEgyenleg" destination="vSc-Iy-ktQ" id="ql6-Ob-I7J"/>
                         <outlet property="labelFelhasznaltEgyenleg" destination="uI4-AW-rZu" id="cgP-ji-B7T"/>
                         <outlet property="labelParkolasiIdo" destination="10W-4G-o4X" id="alv-bz-HHK"/>
@@ -265,7 +267,7 @@
                                     <constraint firstAttribute="width" secondItem="tmQ-N1-rlJ" secondAttribute="height" multiplier="128:67" id="ySQ-eG-Y9h"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="btnTapped:" destination="QPp-Do-ySM" eventType="touchUpInside" id="LPx-MR-rgM"/>
+                                    <action selector="btnInditasTapped:" destination="QPp-Do-ySM" eventType="touchUpInside" id="LPx-MR-rgM"/>
                                 </connections>
                             </button>
                         </subviews>

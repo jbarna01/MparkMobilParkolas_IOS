@@ -17,12 +17,13 @@ class PlateChangeService {
         
         // Beállítjuk a semaphore-t, hogy csak az aszinkron hívás befejezését megvárjuk
         let semaphore = DispatchSemaphore(value: 0);
+        
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil);
         
         // Összeállítjuk az URL-t
         let url = createURLWithComponentsAccountPlates(paramPhoneNumber: phoneNumber, paramApiKey: apiKey)!
+        
         let request = NSMutableURLRequest(url: url as URL)
-
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type") //Optional
         request.httpMethod = "GET"
         
@@ -60,12 +61,12 @@ class PlateChangeService {
         var changePlateResponse = ChangePlateResponse(result: "");
         // Beállítjuk a semaphore-t, hogy csak az aszinkron hívás befejezését megvárjuk
         let semaphore = DispatchSemaphore(value: 0);
+        
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil);
         
         // Összeállítjuk az URL-t
         let url = createURLWithComponentschangeAktPlate(paramPhoneNumber: phoneNumber, paramApiKey: apiKey, paramPlate: plate)!
         let request = NSMutableURLRequest(url: url as URL)
-
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type") //Optional
         request.httpMethod = "POST"
         

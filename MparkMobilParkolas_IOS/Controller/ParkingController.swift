@@ -24,18 +24,19 @@ class ParkingController: UIViewController {
     var apiKey: String = "";
     var isRegistration: Int = 0;
     var isRemmemberZone: Bool = false;
-    var aktPlate = "";
     let defaults = UserDefaults.standard;
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {tabBarItem.isEnabled = false}
-        
         tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true)
     }
    
     override func viewDidAppear(_ animated: Bool) {
+        accountAdatokLekerese();
+    }
+    
+    func accountAdatokLekerese() {
         if Reachability.isConnectedToNetwork() == true {
             // Kiolvassuk a tárolt adatokat
             phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
@@ -45,30 +46,32 @@ class ParkingController: UIViewController {
 
             let tabbar = tabBarController as! TabBarController;
             tabbar.phoneNumber = phoneNumber;
-            
-            // TODO: Innen fgv-be szervezni.
+
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
          
-            // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             indikatorInditasa();
             
+            // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             let getAccountData = parkingService.getAccountDataGET(phoneNumber: phoneNumber, apiKey: apiKey);
-            switch getAccountData.responseData {
+            switch getAccountData.result {
             case "OK":
-                let tabbar = tabBarController as! TabBarController;
-                tabbar.aktPlate = getAccountData.plate;
+                tabbar.aktPlate = getAccountData.plate!;
+                tabbar.amount = getAccountData.amount!;
                 if getAccountData.parkingId != "-1" {
+                    // Amennyiben van futó parkolás, úgy a parkingID mentése után átirányítjuk a Parkolásom oldalra.
+                    tabbar.parkingId = getAccountData.parkingId!;
                     self.tabBarController?.selectedIndex = Konst.tabbar.parkolasom;
                 } else {
-                    aktPlate = utils.plateConvert(plate: getAccountData.plate);
-                    labelRendszam.text = aktPlate;
+                    // Megjelenítjük az aktuális rendszámot
+                    labelRendszam.text = utils.plateConvert(plate: getAccountData.plate!);
+                    // Amennyiben a zóna mentése be lett kapcsolva a mentett zóna számot beállítjuk
+                    if isRemmemberZone {
+                        if let saveZoneCode = defaults.string(forKey: "storeZone") {
+                            txtZonaKod.text = saveZoneCode;
+                        }
+                    };
                 }
-                if isRemmemberZone {
-                    if let saveZoneCode = defaults.string(forKey: "storeZone") {
-                        txtZonaKod.text = saveZoneCode;
-                    }
-                };
                 // Visszaállítjuk a VIEW elemek láthatóságát
                 self.itemsEnableDisable(isEnable: true);
             case "-1001":
@@ -78,7 +81,8 @@ class ParkingController: UIViewController {
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1002 );
                 present(alertVC, animated: true);
             case "-1003":
-                // TODO: Kezelni kell ezt az eseményt
+                // TODO: Kezelni kell ezt az eseményt. (Más telefonról indított futó parkolás)
+                // Át kell irányítani a rendszám váltáshoz.
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1002 );
                 present(alertVC, animated: true);
             case "-9998":
@@ -95,7 +99,7 @@ class ParkingController: UIViewController {
         }
     }
 
-    @IBAction func btnTapped(_ sender: Any) {
+    @IBAction func btnInditasTapped(_ sender: Any) {
         if Reachability.isConnectedToNetwork() == true {
             let zoneCode: String = txtZonaKod.text!;
             if (zoneCode.isEmpty) {
@@ -111,24 +115,24 @@ class ParkingController: UIViewController {
                     let tabbar = tabBarController as! TabBarController;
                     // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
                     itemsEnableDisable(isEnable: false);
-                    print(String(describing: tabbar.aktPlate))
+
                     let startParkingData = parkingService.startParkinPOST(phoneNumber: phoneNumber, apiKey: apiKey, aktPlate: String(describing: tabbar.aktPlate), zoneCode: zoneCode);
-                    switch startParkingData.responseData {
-                    case "-1002":
+                    switch startParkingData.result {
+                    case "OK":
+                        // Bár jönnek vissza adatok de nem kell menteni mert a Parkolásom oldalt egyből lekérjük újra parkolási adatokat
                         if isRemmemberZone {defaults.set(zoneCode, forKey: "storeZone");};
-                        
-                        //TODO: Át kell irányítani a parkolok oldalra, de előtte be kell állítani számos adatot.
-                        self.tabBarController?.selectedIndex = Konst.tabbar.profilom;
+                        self.tabBarController?.selectedIndex = Konst.tabbar.parkolok;
                     case "-1001":
                         // Mobil alkalmazás használata nem engedélyezett
                         let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1001 );
                         present(alertVC, animated: true);
-                    case "-10002":
+                    case "-1002":
                         // Nem sikerült lekérdezni a felhasználói adatokat!\n\rKérem próbálja újra!
                         let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1002 );
                         present(alertVC, animated: true);
                     case "-1003":
-                        //TODO: Már fut a parkoláas
+                        //TODO: Már fut a parkolást
+                        //Át kell irányítani, a rendszámváltáshoz.
                         let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.msg_1003 );
                         present(alertVC, animated: true);
                     case "-3001":
@@ -173,12 +177,12 @@ class ParkingController: UIViewController {
         }
     }
     
-   // Képernyő elemek engedélyezése/tíltása
-   func itemsEnableDisable(isEnable: Bool) {
-           self.txtZonaKod.isEnabled = isEnable;
-           self.btnParkolasIndatasa.isEnabled = isEnable;
-   }
-
+    // Képernyő elemek engedélyezése/tíltása
+    func itemsEnableDisable(isEnable: Bool) {
+        self.txtZonaKod.isEnabled = isEnable;
+        self.btnParkolasIndatasa.isEnabled = isEnable;
+    }
+    
     // A várokozást jelző "ikon" indítása
     func indikatorInditasa() {
         
@@ -193,15 +197,4 @@ class ParkingController: UIViewController {
     func indikatorLeallitas() {
         activityIndicator.stopAnimating();
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

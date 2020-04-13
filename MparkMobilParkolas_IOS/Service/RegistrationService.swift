@@ -30,9 +30,9 @@ class RegistrationService {
     
     // Lekérdezi, hogy létezik-e a regisztrációs kód.
     // Amennyiben létezik, úgy visszakapjuk a regisztráció kód mellett a kódhoz tartozó telefonszámot is.
-    func checkApiKey(apiKey: String) -> (phoneNumber: String, responseData: String) {
-        var phoneNumber: String = "";
-        var responseData: String = "";
+    func checkApiKey(apiKey: String) -> RegistrationResponse {
+        
+        var registrationResponse = RegistrationResponse(phone: "", result: "");
         
         // Beállítjuk a semaphore-t, hogy csak az aszinkron hívás befejezését megvárjuk
         let semaphore = DispatchSemaphore(value: 0);
@@ -48,43 +48,36 @@ class RegistrationService {
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             if error != nil {
-                print (error!)
-                responseData = "-9999";
-
+                registrationResponse = RegistrationResponse(phone: "", result: "-9999");
             }
             
             if let safeData = data {
-                let registrationResponseData = self.parseJSON(registrationResponse: safeData);
-                //if (registrationResponseData.success) {
-                    responseData = registrationResponseData.result
-                    switch responseData {
-                    case "OK":
-                        phoneNumber = registrationResponseData.phone!;
-                    default:
-                        phoneNumber = "";
-                    }
-                //} else {
-                    // Hiba van nem sikerült a művelet
-                //}
+                registrationResponse = self.parseJSON(registrationResponse: safeData);
             }
             semaphore.signal();
         }
         
         task.resume()
-        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-        return (phoneNumber, responseData);
+
+        let result = semaphore.wait(timeout: .distantFuture);
+            switch result {
+            case .success:
+                return registrationResponse;
+            case .timedOut:
+                return RegistrationResponse(phone: "", result: "-9998");
+            }
+
     }
         
 
     func parseJSON(registrationResponse: Data) -> RegistrationResponse {
-        //print (registrationResponse);
         let decoder = JSONDecoder();
         var decodedData = RegistrationResponse(phone: "", result: "");
         do {
             decodedData = try decoder.decode(RegistrationResponse.self, from: registrationResponse)
             return decodedData
         } catch {
-            decodedData.result = Konst.error.err_9999;
+            decodedData = RegistrationResponse(phone: "", result: "-9999");
         }
         return decodedData;
     }

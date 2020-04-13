@@ -11,12 +11,9 @@ import UIKit
 class ParkingService {
  
     // Account adatok GET függvényhívása
-    func getAccountDataGET(phoneNumber: String, apiKey: String) -> (plate: String, parkingId: String, amount: String, responseData: String) {
+    func getAccountDataGET(phoneNumber: String, apiKey: String) -> ParkingAccountResponse {
         
-        var plate: String = "";
-        var parkingId: String = "";
-        var amount: String = "";
-        var responseData: String = "";
+        var parkingAccountResponse = ParkingAccountResponse(amount: "", plate: "", parkingId: "", result: "", status: "");
         
         // Beállítjuk a semaphore-t, hogy csak az aszinkron hívás befejezését megvárjuk
         let semaphore = DispatchSemaphore(value: 0);
@@ -25,59 +22,38 @@ class ParkingService {
         // Összeállítjuk az URL-t
         let url = createURLWithComponentsAccount(paramPhoneNumber: phoneNumber, paramApiKey: apiKey)!
         let request = NSMutableURLRequest(url: url as URL)
-
+        
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type") //Optional
         request.httpMethod = "GET"
-
+        
         let session = URLSession(configuration: .default);
         
         // Meghívjuk a GET metódust
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-              print (error!)
-              responseData = "-9999";
+                parkingAccountResponse = ParkingAccountResponse(amount: "-1", plate: "", parkingId: "-1", result: "-9999", status: "");
             }
-
+            
             if let safeData = data {
-                
-                let parkingAccountResponseData = self.accountParseJSON(parkingAccountResponse: safeData);
-                responseData = parkingAccountResponseData.result
-                switch responseData {
-                    case "OK":
-                        plate = parkingAccountResponseData.plate!;
-                        parkingId = parkingAccountResponseData.parkingId!;
-                        amount = parkingAccountResponseData.amount!;
-                    case "-1003":
-                        plate = parkingAccountResponseData.plate!;
-                        parkingId = parkingAccountResponseData.parkingId!;
-                        amount = parkingAccountResponseData.amount!;
-                    default:
-                        plate = "";
-                        parkingId = "";
-                        amount = "";
-                }
+                parkingAccountResponse = self.accountParseJSON(parkingAccountResponse: safeData);
             }
-        semaphore.signal();
+            semaphore.signal();
         }
         task.resume();
-
+        
         let result = semaphore.wait(timeout: .distantFuture);
         // Sikeres lefutás esetén levesszük az indikátort a képernyőröl
         switch result {
         case .success:
-            return (plate, parkingId, amount, responseData);
+            return parkingAccountResponse;
         case .timedOut:
-            return ("", "-1", "-1", "-9998");
+            return ParkingAccountResponse(amount: "-1", plate: "", parkingId: "", result: "-9999", status: "");
         }
     }
     
-    func startParkinPOST (phoneNumber: String, apiKey: String, aktPlate: String, zoneCode: String)  -> (parkingId: String, duration: String, parkingCost: String, zonaCost: String, responseData: String) {
-        
-        var parkingId: String = "";
-        var duration: String = "";
-        var parkingCost: String = "";
-        var zoneCost: String = "";
-        var responseData: String = "";
+    func startParkinPOST (phoneNumber: String, apiKey: String, aktPlate: String, zoneCode: String)  -> StartParkingResponse {
+
+        var startParkingResponse = StartParkingResponse(parkingId: "", duration: "", parkingCost: "", zoneCost: "", result: "");
         
         // Beállítjuk a semaphore-t, hogy csak az aszinkron hívás befejezését megvárjuk
         let semaphore = DispatchSemaphore(value: 0);
@@ -95,29 +71,11 @@ class ParkingService {
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
                 print (error!)
-                responseData = "-9999";
+                startParkingResponse = StartParkingResponse(parkingId: "-1", duration: "", parkingCost: "", zoneCost: "", result: "-9999");
             }
             if let safeData = data {
-                let startParkingResponseData = self.startParkingParseJSON(startParkingResponse: safeData);
-                responseData = startParkingResponseData.result!
-                switch responseData {
-                    case "OK":
-                        parkingId = startParkingResponseData.parkingId!;
-                        duration = startParkingResponseData.duration!;
-                        parkingCost = startParkingResponseData.parkingCost!;
-                        zoneCost = startParkingResponseData.zoneCost!;
-                    case "-1003":
-                        parkingId = startParkingResponseData.parkingId!;
-                    default:
-                        parkingId = "";
-                        duration = "";
-                        parkingCost = "";
-                        zoneCost = "";
-                }
+                startParkingResponse = self.startParkingParseJSON(startParkingResponse: safeData);
             }
-            
-            
-            
             semaphore.signal();
         }
         task.resume();
@@ -126,9 +84,9 @@ class ParkingService {
         // Sikeres lefutás esetén levesszük az indikátort a képernyőröl
         switch result {
         case .success:
-            return (parkingId, duration, parkingCost, zoneCost, responseData);
+            return startParkingResponse;
         case .timedOut:
-            return (parkingId, duration, parkingCost, zoneCost, "-9998");
+            return StartParkingResponse(parkingId: "-1", duration: "", parkingCost: "", zoneCost: "", result: "-9998");
         }
     }
     
@@ -140,7 +98,7 @@ class ParkingService {
             decodedData = try decoder.decode(ParkingAccountResponse.self, from: parkingAccountResponse)
             return decodedData
         } catch {
-            decodedData.result = "-9999";
+            decodedData = ParkingAccountResponse(amount: "-1", plate: "", parkingId: "-1", result: "-9999");
         }
         return decodedData;
     }
@@ -148,14 +106,12 @@ class ParkingService {
     // StartParking adatok JSON dekódolás
     func startParkingParseJSON(startParkingResponse: Data) -> StartParkingResponse {
         let decoder = JSONDecoder();
-        var decodedData = StartParkingResponse(parkingId: "", duration: "", parkingCost: "", zoneCost: "", result: "")
+        var decodedData = StartParkingResponse(parkingId: "", duration: "", parkingCost: "", zoneCost: "", result: "");
         do {
             decodedData = try decoder.decode(StartParkingResponse.self, from: startParkingResponse)
-            print(decodedData)
-            return decodedData
+            return decodedData;
         } catch {
-            print(error)
-            decodedData.result = "-9999";
+            decodedData = StartParkingResponse(parkingId: "-1", duration: "", parkingCost: "", zoneCost: "", result: "-9999");
         }
         return decodedData;
     }

@@ -9,14 +9,13 @@
 import UIKit
 
 class ProfilomController: UIViewController, PlateChangeControllerDelegata {
-
+    
     @IBOutlet weak var btnChangePlate: UIButton!
     @IBOutlet weak var labelPhoneNumber: UILabel!
     @IBOutlet weak var zoneOn: UISwitch!
     @IBOutlet weak var labelZone: UILabel!
     
     let questionYesNoService = QuestionYesNoService();
-    
     let utils = Utils();
     let defaults = UserDefaults.standard;
     
@@ -26,7 +25,7 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
     override func viewDidLoad() {
         super.viewDidLoad();
     }
- 
+    
     override func viewDidAppear(_ animated: Bool) {
         let tabbar = tabBarController as! TabBarController;
         btnChangePlate.setTitle(utils.plateConvert(plate: String(describing: tabbar.aktPlate)), for: .normal)
@@ -68,7 +67,7 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
             self.defaults.removeObject(forKey: "registration");
             // Átírányitjuk a kezdő oldalra
             self.dismiss(animated: true, completion: nil);
-            }
+        }
         present(questionYesNoVc, animated: true);
     }
     
@@ -87,5 +86,5 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
         let tabbar = tabBarController as! TabBarController;
         tabbar.aktPlate = data;
     }
-
+    
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39BFEBADDCE709C40BAED61E /* Pods_MparkMobilParkolas_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA800EB84B306F10D0983964 /* Pods_MparkMobilParkolas_IOS.framework */; };
 		8411D99224446CEF00042ABB /* RunningParkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D99124446CEF00042ABB /* RunningParkingServices.swift */; };
+		8411D994244473C600042ABB /* RunningParkingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D993244473C600042ABB /* RunningParkingResponse.swift */; };
 		8418EDDF2437DBA1000D8815 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EDDE2437DBA1000D8815 /* AlertController.swift */; };
 		843652DB242EB6EE003D48EC /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843652DA242EB6EE003D48EC /* RegistrationResponse.swift */; };
 		8445DC68243BBDE900F94CEC /* ParkingAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445DC67243BBDE900F94CEC /* ParkingAccountResponse.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		8411D99124446CEF00042ABB /* RunningParkingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningParkingServices.swift; sourceTree = "<group>"; };
+		8411D993244473C600042ABB /* RunningParkingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningParkingResponse.swift; sourceTree = "<group>"; };
 		8418EDDE2437DBA1000D8815 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		843652DA242EB6EE003D48EC /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		8445DC67243BBDE900F94CEC /* ParkingAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingAccountResponse.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				84ACBB37243D2E5700CA502E /* StartParkingResponse.swift */,
 				8486FA8024438CA70085BA4E /* AccountPlatesResponse.swift */,
 				8486FA822443C0710085BA4E /* ChangePlateResponse.swift */,
+				8411D993244473C600042ABB /* RunningParkingResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				843652DB242EB6EE003D48EC /* RegistrationResponse.swift in Sources */,
 				84E9B68E243FD609000169F3 /* QuestionYesNoService.swift in Sources */,
 				8472870B24411679004F83D2 /* PlateChangeController.swift in Sources */,
+				8411D994244473C600042ABB /* RunningParkingResponse.swift in Sources */,
 				846F965E24295A1500936977 /* ViewController.swift in Sources */,
 				846F965A24295A1500936977 /* AppDelegate.swift in Sources */,
 				84ACBB34243D0A1E00CA502E /* RunningParkingController.swift in Sources */,

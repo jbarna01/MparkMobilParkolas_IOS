@@ -15,6 +15,8 @@ struct Konst {
         static let startParkingPostUrl = "/resources/parkings/startParking";
         static let accountPlatesGetUrl = "/resources/plates/getPlates";
         static let changeAktPlatesPostUrl = "/resources/plates/selectPlate";
+        static let runningParkingGetUrl = "/resources/parkings/getParking"
+        static let stopParkingGetUrl = "/resources/parkings/stopParking"
     }
     struct identifier {
         static let onePlateCell: String = "onePlateCell";
@@ -55,7 +57,7 @@ struct Konst {
         static let err_3001: String = "Nincs elég egyenlege!";
         static let err_3002: String = "Hibás ZÓNA kód!";
         static let err_3003: String = "Nem sikerült a parkolást elindítani!";
-        static let msg_4001: String = "Nem sikerült leállítani a parkolást!\n\rKérem próbálja újra, vagy állítsa le telefonhívás segítségével!";
+        static let err_4001: String = "Nem sikerült leállítani a parkolást!\n\rKérem próbálja újra, vagy állítsa le telefonhívás segítségével!";
         static let msg_4002: String = "Ezt a parkolást már leállították!";
         static let err_5001: String = "Nem sikerült a rendszám váltás! Kérem próbálja újra!";
         static let err_5002: String = "A rendszámon parkolás fut.\n\rA rendszám váltás nem lehetséges!";

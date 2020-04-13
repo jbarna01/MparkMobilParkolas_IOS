@@ -18,31 +18,32 @@ class ViewController: UIViewController {
             present(alertVC, animated: true);
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
-
-        if (Reachability.isConnectedToNetwork()) {
+        
+        if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard;
             let isRegistration = defaults.integer(forKey: "registration");
-
-        // Megnézzük, hogy a készülék regisztrált-e. isRegistration = 1 regisztrált készülék esetén.
-        if isRegistration != 1 {
-            self.performSegue(withIdentifier: Konst.kapcsolatok.startToRegistration, sender: self);
+            
+            // Megnézzük, hogy a készülék regisztrált-e. isRegistration = 1 regisztrált készülék esetén.
+            if isRegistration != 1 {
+                self.performSegue(withIdentifier: Konst.kapcsolatok.startToRegistration, sender: self);
             } else {
-            self.performSegue(withIdentifier: Konst.kapcsolatok.startToParking, sender: self);
+                self.performSegue(withIdentifier: Konst.kapcsolatok.startToParking, sender: self);
             }
         } else {
             let alertVC = alertService.alert(title: "Hiba!", szoveg: Konst.info.info_011)
             present(alertVC, animated: true);
         }
-
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning();
+    }
+    
     open override var shouldAutorotate: Bool {
         get {
-            return false
+            return false;
         }
     }
 }

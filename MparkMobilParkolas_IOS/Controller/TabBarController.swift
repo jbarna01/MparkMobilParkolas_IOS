@@ -12,6 +12,11 @@ class TabBarController: UITabBarController {
 
     var phoneNumber: String = "";
     var aktPlate: String = "";
+    var parkingId: String = "";
+    var amount: String = ""
+    
+    let parkingService = ParkingService();
+    let defaults = UserDefaults.standard;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,24 +26,24 @@ class TabBarController: UITabBarController {
         // Ezek függvényében tiljuk a gombokat
         
         if ( self.futParkolas() ) {
-//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolok] as? UITabBarItem {
-//                tabBarItem.isEnabled = false;
-//            }
-//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.profilom] as? UITabBarItem {
-//                tabBarItem.isEnabled = false;
-//            }
             self.selectedIndex = Konst.tabbar.parkolasom;
         } else {
-//            if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {
-//                tabBarItem.isEnabled = false;
-//            }
             self.selectedIndex = Konst.tabbar.parkolok;
         }
     }
     
     func futParkolas() -> Bool {
-        //TODO ezt rendezni kell
-        return false
+        var phoneNumber: String = "";
+        var apiKey: String = "";
+        phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
+        apiKey = (defaults.string(forKey: "apiKey"))!;
+        // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
+        let getAccountData = parkingService.getAccountDataGET(phoneNumber: phoneNumber, apiKey: apiKey);
+        if getAccountData.parkingId == "-1" {
+            return false;
+        } else {
+            return true;
+        }
     }
     
     
@@ -53,14 +58,4 @@ class TabBarController: UITabBarController {
             tabBarItem.isEnabled = ProfilomBool;
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

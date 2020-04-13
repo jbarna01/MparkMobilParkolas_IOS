@@ -22,27 +22,17 @@ class PlateChangeController: UIViewController {
     @IBOutlet weak var plateTableView: UITableView!
     @IBOutlet weak var btnMentes: UIButton!
     @IBOutlet weak var btnVissza: UIButton!
-    
-    var phoneNumber: String = "";
-    var apiKey: String = "";
-    //var selectPlate: String = "";
-    var aktPlate: String?;
-    
-    //TODO: Erre nincs szükség miután DB-ből betöltöttök az adatokat
-//    var plates: [Plates] = [
-//        Plates(plate: "LWZ918"),
-//        Plates(plate: "XID123"),
-//        Plates(plate: "GZE389"),
-//        Plates(plate: "IFR567")
-//    ]
-    
-    var plates = [String]();
-    
+
     let utils = Utils();
     let alertService = AlertService();
     let plateChangeService = PlateChangeService();
     let defaults = UserDefaults.standard;
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
+
+    var phoneNumber: String = "";
+    var apiKey: String = "";
+    var aktPlate: String?;
+    var plates = [String]();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +45,6 @@ class PlateChangeController: UIViewController {
         labelAktPlate.text = utils.plateConvert(plate: aktPlate!);
         labelFlottaRendszamai.layer.masksToBounds = true;
         labelFlottaRendszamai.layer.cornerRadius = labelFlottaRendszamai.frame.size.height / 2;
-        //selectPlate = aktPlate!;
     }
 
     // Mégse gombot nyomta meg
@@ -66,12 +55,6 @@ class PlateChangeController: UIViewController {
     // Mentés gombot nyomta meg, menteni kell a kiválasztott rendszámot.
     @IBAction func btnMentesTapped(_ sender: Any) {
         plateChange();
-//        labelAktPlate.text = utils.plateConvert(plate: selectPlate);
-//        //TODO: Ez nem kell, helyette menteni kell a változást
-//        if let delegate = delegate {
-//            delegate.doSometthingWith(data: selectPlate);
-//            self.dismiss(animated: true, completion: nil)
-//        }
     }
     
     func queryPlates() {
@@ -84,9 +67,9 @@ class PlateChangeController: UIViewController {
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
             
-            // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             indikatorInditasa();
             
+            // Lekérdezzuk az Accounthoz tartozó rendszámokat
             let getAccountPlates = plateChangeService.getAccountPlatesGET(phoneNumber: phoneNumber, apiKey: apiKey);
             
             switch getAccountPlates.result {
@@ -146,12 +129,12 @@ class PlateChangeController: UIViewController {
             case "-1002":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1002 );
                 present(alertVC, animated: true);
-                case "-5001":
-                    let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_5001 );
-                    present(alertVC, animated: true);
-                case "-5002":
-                    let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_5002 );
-                    present(alertVC, animated: true);
+            case "-5001":
+                let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_5001 );
+                present(alertVC, animated: true);
+            case "-5002":
+                let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_5002 );
+                present(alertVC, animated: true);
             case "-9998":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9998 );
                 present(alertVC, animated: true);
