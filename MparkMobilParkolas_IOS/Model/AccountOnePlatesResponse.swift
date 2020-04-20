@@ -1,18 +1,18 @@
 //
-//  AccountPlates.swift
+//  AccountOnePlatesResponse.swift
 //  MparkMobilParkolas_IOS
 //
-//  Created by Administrator on 2020. 04. 12..
+//  Created by Administrator on 2020. 04. 14..
 //  Copyright © 2020. BJ. All rights reserved.
 //
 
 import Foundation
 
-struct AccountPlatesResponse: Decodable {
+struct AccountOnePlatesResponse: Decodable {
     var result: String
-    var allPlates: [AllPlates]?
+    var allPlates: OnePlates?
 }
-struct AllPlates: Decodable{
+struct OnePlates: Decodable{
     var id: String?
     var mul: String?
     var type: String?

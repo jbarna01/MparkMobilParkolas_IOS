@@ -11,6 +11,7 @@
 		8411D99224446CEF00042ABB /* RunningParkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D99124446CEF00042ABB /* RunningParkingServices.swift */; };
 		8411D994244473C600042ABB /* RunningParkingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D993244473C600042ABB /* RunningParkingResponse.swift */; };
 		8418EDDF2437DBA1000D8815 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418EDDE2437DBA1000D8815 /* AlertController.swift */; };
+		84308F542446692800972D93 /* AccountOnePlatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308F532446692800972D93 /* AccountOnePlatesResponse.swift */; };
 		843652DB242EB6EE003D48EC /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843652DA242EB6EE003D48EC /* RegistrationResponse.swift */; };
 		8445DC68243BBDE900F94CEC /* ParkingAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445DC67243BBDE900F94CEC /* ParkingAccountResponse.swift */; };
 		84527E2E24427329002882B1 /* PlateChangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84527E2D24427329002882B1 /* PlateChangeService.swift */; };
@@ -46,6 +47,7 @@
 		8411D99124446CEF00042ABB /* RunningParkingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningParkingServices.swift; sourceTree = "<group>"; };
 		8411D993244473C600042ABB /* RunningParkingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningParkingResponse.swift; sourceTree = "<group>"; };
 		8418EDDE2437DBA1000D8815 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		84308F532446692800972D93 /* AccountOnePlatesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnePlatesResponse.swift; sourceTree = "<group>"; };
 		843652DA242EB6EE003D48EC /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		8445DC67243BBDE900F94CEC /* ParkingAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingAccountResponse.swift; sourceTree = "<group>"; };
 		84527E2D24427329002882B1 /* PlateChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateChangeService.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				8486FA8024438CA70085BA4E /* AccountPlatesResponse.swift */,
 				8486FA822443C0710085BA4E /* ChangePlateResponse.swift */,
 				8411D993244473C600042ABB /* RunningParkingResponse.swift */,
+				84308F532446692800972D93 /* AccountOnePlatesResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				84ACBB34243D0A1E00CA502E /* RunningParkingController.swift in Sources */,
 				846F965C24295A1500936977 /* SceneDelegate.swift in Sources */,
 				84ACBB38243D2E5700CA502E /* StartParkingResponse.swift in Sources */,
+				84308F542446692800972D93 /* AccountOnePlatesResponse.swift in Sources */,
 				84ACBB36243D0A3600CA502E /* ProfilomController.swift in Sources */,
 				84E9B68C243FCC14000169F3 /* QuestionYesNoController.swift in Sources */,
 				84F34170242AB19500B1B50E /* RegistrationController.swift in Sources */,
@@ -460,7 +464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -514,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -532,6 +536,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FSRUA6647;
 				INFOPLIST_FILE = MparkMobilParkolas_IOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.econsultkft.MparkMobilParkolas-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -551,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FSRUA6647;
 				INFOPLIST_FILE = MparkMobilParkolas_IOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.econsultkft.MparkMobilParkolas-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

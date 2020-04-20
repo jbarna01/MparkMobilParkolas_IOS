@@ -15,21 +15,22 @@ class ParkingController: UIViewController {
     @IBOutlet weak var btnParkolasIndatasa: UIButton!
     @IBOutlet weak var btnParkolok: UITabBarItem!
     
-    let utils = Utils();
-    let parkingService = ParkingService();
-    let alertService = AlertService();
-    
     var phoneNumber: String = "";
     var parkingId: String = "";
     var apiKey: String = "";
     var isRegistration: Int = 0;
     var isRemmemberZone: Bool = false;
+    
+    let utils = Utils();
+    let parkingService = ParkingService();
+    let alertService = AlertService();
+    
     let defaults = UserDefaults.standard;
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true)
+        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
     }
    
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +38,7 @@ class ParkingController: UIViewController {
     }
     
     func accountAdatokLekerese() {
+        // Leellenőrizzük van-e Internet kapcsolat
         if Reachability.isConnectedToNetwork() == true {
             // Kiolvassuk a tárolt adatokat
             phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
@@ -49,11 +51,11 @@ class ParkingController: UIViewController {
 
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
-         
             indikatorInditasa();
             
             // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             let getAccountData = parkingService.getAccountDataGET(phoneNumber: phoneNumber, apiKey: apiKey);
+            
             switch getAccountData.result {
             case "OK":
                 tabbar.aktPlate = getAccountData.plate!;
@@ -188,7 +190,11 @@ class ParkingController: UIViewController {
         
         activityIndicator.center = self.view.center;
         activityIndicator.hidesWhenStopped = true;
-        activityIndicator.style = UIActivityIndicatorView.Style.medium;
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = UIActivityIndicatorView.Style.medium
+        } else {
+            // Fallback on earlier versions
+        };
         view.addSubview(activityIndicator);
         activityIndicator.startAnimating();
     }
@@ -196,5 +202,16 @@ class ParkingController: UIViewController {
     // A várokozást jelző "ikon" indítása
     func indikatorLeallitas() {
         activityIndicator.stopAnimating();
+    }
+    
+    // Virtuális billentyűzet megjelenítése a text mezőbe történő kattintáskor
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true);
+    }
+    
+    open override var shouldAutorotate: Bool {
+        get {
+            return false
+        }
     }
 }

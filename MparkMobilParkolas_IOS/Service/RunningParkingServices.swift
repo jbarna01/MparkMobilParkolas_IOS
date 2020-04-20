@@ -15,7 +15,6 @@ class RunningParkingServices {
         var runningParkingResponse = RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"");
         
         let semaphore = DispatchSemaphore(value: 0);
-        
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil);
         
         let url = createURLWithComponentsRunningParking(paramPhoneNumber: phoneNumber, paramApiKey: apiKey, paramParkingId: parkingId)!;
@@ -24,10 +23,11 @@ class RunningParkingServices {
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"); //Optional
         request.httpMethod = "GET";
         
+        let session = URLSession(configuration: .default);
+        
         // Meghívjuk a GET metódust a futó parkolási adatok lekérdezéséhez
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                print (error!)
                 runningParkingResponse = RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"-9999");
             }
             
@@ -53,18 +53,19 @@ class RunningParkingServices {
         var stopParkingResponse = RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"");
         
         let semaphore = DispatchSemaphore(value: 0);
-        
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil);
         
         let url = createURLWithComponentsStopParking(paramPhoneNumber: phoneNumber, paramApiKey: apiKey, paramParkingId: parkingId)!;
+        
         let request = NSMutableURLRequest(url: url as URL);
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"); //Optional
         request.httpMethod = "GET";
         
+        let session = URLSession(configuration: .default);
+        
         // Meghívjuk a GET metódust a futó parkolási adatok lekérdezéséhez
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                print (error!)
                 stopParkingResponse = RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"-9999");
             }
             
@@ -124,7 +125,6 @@ class RunningParkingServices {
             let decodedData = try decoder.decode(RunningParkingResponse.self, from: accountPlates)
             return decodedData
         } catch {
-            print (error)
             return RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"-9999");
         }
     }
@@ -136,7 +136,6 @@ class RunningParkingServices {
             let decodedData = try decoder.decode(RunningParkingResponse.self, from: accountPlates)
             return decodedData
         } catch {
-            print (error)
             return RunningParkingResponse(parkingId: "", start: "", duration: "", parkingCost: "", zoneCost: "", result:"-9999");
         }
     }

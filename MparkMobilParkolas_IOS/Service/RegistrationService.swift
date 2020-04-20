@@ -39,8 +39,8 @@ class RegistrationService {
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil);
                              
         let url = createURLWithComponentsRegistration(paramApiKey: apiKey)!;
-        let request = NSMutableURLRequest(url: url as URL);
         
+        let request = NSMutableURLRequest(url: url as URL);
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type");
         request.httpMethod = "PUT";
         

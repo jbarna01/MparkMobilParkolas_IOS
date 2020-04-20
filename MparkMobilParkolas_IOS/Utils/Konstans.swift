@@ -46,6 +46,7 @@ struct Konst {
         static let msg_009: String = "Nem lehet lekérdezni a rendszámokat!";
         static let info_010: String = "Nincskapcsolat";
         static let info_011: String = "Az alkalmazás hazsnálatához Internet kapcsolat szükséges!";
+        static let info_012: String = "Parkolását eállítottuk!";
     }
     struct error {
         static let err_1001: String = "Mobil alkalmazás használata nem engedélyezett!";
@@ -57,6 +58,7 @@ struct Konst {
         static let err_3001: String = "Nincs elég egyenlege!";
         static let err_3002: String = "Hibás ZÓNA kód!";
         static let err_3003: String = "Nem sikerült a parkolást elindítani!";
+        static let err_3004: String = "Nincs megadva parkolási azonosító!";
         static let err_4001: String = "Nem sikerült leállítani a parkolást!\n\rKérem próbálja újra, vagy állítsa le telefonhívás segítségével!";
         static let msg_4002: String = "Ezt a parkolást már leállították!";
         static let err_5001: String = "Nem sikerült a rendszám váltás! Kérem próbálja újra!";

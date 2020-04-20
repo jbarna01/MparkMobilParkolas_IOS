@@ -15,7 +15,12 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
     @IBOutlet weak var zoneOn: UISwitch!
     @IBOutlet weak var labelZone: UILabel!
     
+    var phoneNumber: String = "";
+    var apiKey: String = "";
+    
     let questionYesNoService = QuestionYesNoService();
+    let alertService = AlertService();
+    let plateChangeService = PlateChangeService();
     let utils = Utils();
     let defaults = UserDefaults.standard;
     
@@ -24,6 +29,7 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,10 +63,21 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
     }
     
     @IBAction func btnPlateChangeTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: Konst.kapcsolatok.rendszamValatas, sender: self)
+        phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
+        apiKey = (defaults.string(forKey: "apiKey"))!;
+        // Ellenőrizzük, hogy lekérdezhetők-e a rendszámok
+        // Amennyiben sikeres a lekérdezés, csak utána engedjük tovább az oldalt.
+        let getAccountPlates = plateChangeService.getAccountPlatesGET(phoneNumber: phoneNumber, apiKey: apiKey);
+        switch getAccountPlates.result {
+        case "OK":
+            self.performSegue(withIdentifier: Konst.kapcsolatok.rendszamValatas, sender: self)
+        default:
+            let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9999 );
+            present(alertVC, animated: true);
+        }
     }
     
-    @IBAction func logoutBtnTapped(_ sender: Any) {
+    @IBAction func kilepesBtnTapped(_ sender: Any) {
         let questionYesNoVc = questionYesNoService.questionYesNo(title: "Figyelmeztetés", szoveg: "Bíztos ki akarsz lépni.") {
             self.defaults.removeObject(forKey: "phoneNumber");
             self.defaults.removeObject(forKey: "apiKey");
@@ -85,6 +102,18 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
         btnChangePlate.setTitle(utils.plateConvert(plate: String(describing: data)), for: .normal);
         let tabbar = tabBarController as! TabBarController;
         tabbar.aktPlate = data;
+    }
+    
+    func tabBarBeallitas(parkolokBool: Bool, parkolasomBool: Bool, ProfilomBool: Bool) {
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolok] as? UITabBarItem {
+            tabBarItem.isEnabled = parkolokBool;
+        }
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.parkolasom] as? UITabBarItem {
+            tabBarItem.isEnabled = parkolasomBool;
+        }
+        if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray as AnyObject as? NSArray, let tabBarItem = arrayOfTabBarItems[Konst.tabbar.profilom] as? UITabBarItem {
+            tabBarItem.isEnabled = ProfilomBool;
+        }
     }
     
 }

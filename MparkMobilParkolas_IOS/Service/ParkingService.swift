@@ -61,8 +61,8 @@ class ParkingService {
         
         // Összeállítjuk az URL-t
         let url = createURLWithComponentsstartParkin(paramPhoneNumber: phoneNumber, paramApiKey: apiKey, paramAktPlate: aktPlate, paramZone: zoneCode)!
-        let request = NSMutableURLRequest(url: url as URL)
 
+        let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
 
         let session = URLSession(configuration: .default);
@@ -70,7 +70,6 @@ class ParkingService {
         // Meghívjuk a GET metódust
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                print (error!)
                 startParkingResponse = StartParkingResponse(parkingId: "-1", duration: "", parkingCost: "", zoneCost: "", result: "-9999");
             }
             if let safeData = data {

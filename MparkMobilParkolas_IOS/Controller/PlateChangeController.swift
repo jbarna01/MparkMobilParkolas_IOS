@@ -13,7 +13,7 @@ protocol PlateChangeControllerDelegata: NSObjectProtocol {
 }
 
 class PlateChangeController: UIViewController {
-
+    
     weak var delegate: PlateChangeControllerDelegata?
     @IBOutlet weak var labelAktualisRendszam: UILabel!
     @IBOutlet weak var labelAktPlate: UILabel!
@@ -22,13 +22,13 @@ class PlateChangeController: UIViewController {
     @IBOutlet weak var plateTableView: UITableView!
     @IBOutlet weak var btnMentes: UIButton!
     @IBOutlet weak var btnVissza: UIButton!
-
+    
     let utils = Utils();
     let alertService = AlertService();
     let plateChangeService = PlateChangeService();
     let defaults = UserDefaults.standard;
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
-
+    
     var phoneNumber: String = "";
     var apiKey: String = "";
     var aktPlate: String?;
@@ -36,17 +36,19 @@ class PlateChangeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryPlates();
         plateTableView.delegate = self;
         plateTableView.dataSource = self;
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        queryPlates();
+        self.btnMentes.isEnabled = false;
         labelAktPlate.text = utils.plateConvert(plate: aktPlate!);
         labelFlottaRendszamai.layer.masksToBounds = true;
         labelFlottaRendszamai.layer.cornerRadius = labelFlottaRendszamai.frame.size.height / 2;
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
 
+    }
+    
     // Mégse gombot nyomta meg
     @IBAction func btnVisszaTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);
@@ -55,6 +57,7 @@ class PlateChangeController: UIViewController {
     // Mentés gombot nyomta meg, menteni kell a kiválasztott rendszámot.
     @IBAction func btnMentesTapped(_ sender: Any) {
         plateChange();
+        
     }
     
     func queryPlates() {
@@ -66,8 +69,11 @@ class PlateChangeController: UIViewController {
             
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
-            
-            indikatorInditasa();
+            if #available(iOS 13.0, *) {
+                indikatorInditasa()
+            } else {
+                // Fallback on earlier versions
+            };
             
             // Lekérdezzuk az Accounthoz tartozó rendszámokat
             let getAccountPlates = plateChangeService.getAccountPlatesGET(phoneNumber: phoneNumber, apiKey: apiKey);
@@ -82,17 +88,26 @@ class PlateChangeController: UIViewController {
             case "-1001":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1001 );
                 present(alertVC, animated: true);
-                // TODO: Vissza kell menni az előző oldalra, mindne hiba esetén
+                self.dismiss(animated: true, completion: nil);
             case "-1002":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1002 );
                 present(alertVC, animated: true);
+                self.dismiss(animated: true, completion: nil);
             case "-9998":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9998 );
                 present(alertVC, animated: true);
+            //self.dismiss(animated: true, completion: nil);
+            case "-9999":
+                let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9998 );
+                present(alertVC, animated: true);
+                //self.dismiss(animated: true, completion: nil);
+                self.dismiss(animated: true, completion: nil);
             default:
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9999 );
                 present(alertVC, animated: true);
+                self.dismiss(animated: true, completion: nil);
             }
+            itemsEnableDisable(isEnable: true);
             indikatorLeallitas();
         } else {
             let alertVC = alertService.alert(title: "Nincskapcsolat!", szoveg: Konst.info.info_011 );
@@ -108,9 +123,11 @@ class PlateChangeController: UIViewController {
             
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
-            
-            // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
-            indikatorInditasa();
+            if #available(iOS 13.0, *) {
+                indikatorInditasa()
+            } else {
+                // Fallback on earlier versions
+            };
             
             let changePlateResponse = plateChangeService.changeAktPlatePOST(phoneNumber: phoneNumber, apiKey: apiKey, plate: aktPlate!);
             switch changePlateResponse.result {
@@ -120,9 +137,8 @@ class PlateChangeController: UIViewController {
                 labelMentesSzukseges.text = "";
                 if let delegate = delegate {
                     delegate.doSometthingWith(data: aktPlate!);
-                    //self.dismiss(animated: true, completion: nil)
                 }
-                self.itemsEnableDisable(isEnable: true);
+                self.btnMentes.isEnabled = false;
             case "-1001":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1001 );
                 present(alertVC, animated: true);
@@ -143,7 +159,7 @@ class PlateChangeController: UIViewController {
                 present(alertVC, animated: true);
             }
             // Visszaállítjuk a VIEW elemek láthatóságát
-            self.itemsEnableDisable(isEnable: true);
+            itemsEnableDisable(isEnable: true);
             indikatorLeallitas();
         } else {
             let alertVC = alertService.alert(title: "Nincskapcsolat!", szoveg: Konst.info.info_011 );
@@ -153,24 +169,34 @@ class PlateChangeController: UIViewController {
     
     // Képernyő elemek engedélyezése/tíltása
     func itemsEnableDisable(isEnable: Bool) {
-            self.btnVissza.isEnabled = isEnable;
-            self.btnMentes.isEnabled = isEnable;
+        self.btnVissza.isEnabled = isEnable;
     }
-
-     // A várokozást jelző "ikon" indítása
-     func indikatorInditasa() {
-         
-         activityIndicator.center = self.view.center;
-         activityIndicator.hidesWhenStopped = true;
-         activityIndicator.style = UIActivityIndicatorView.Style.medium;
-         view.addSubview(activityIndicator);
-         activityIndicator.startAnimating();
-     }
-     
-     // A várokozást jelző "ikon" indítása
-     func indikatorLeallitas() {
-         activityIndicator.stopAnimating();
-     }
+    
+    // A várokozást jelző "ikon" indítása
+    func indikatorInditasa() {
+        
+        activityIndicator.center = self.view.center;
+        activityIndicator.hidesWhenStopped = true;
+        activityIndicator.style = UIActivityIndicatorView.Style.gray;
+        view.addSubview(activityIndicator);
+        activityIndicator.startAnimating();
+    }
+    
+    // A várokozást jelző "ikon" indítása
+    func indikatorLeallitas() {
+        activityIndicator.stopAnimating();
+    }
+    
+    // Virtuális billentyűzet megjelenítése a text mezőbe történő kattintáskor
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true);
+    }
+    
+    open override var shouldAutorotate: Bool {
+        get {
+            return false
+        }
+    }
 }
 
 
@@ -199,5 +225,6 @@ extension PlateChangeController: UITableViewDelegate {
         labelAktPlate.text = utils.plateConvert(plate: aktPlate!);
         labelAktualisRendszam.text = "A Kiválasztott rendszám";
         labelMentesSzukseges.text = "(mentés szükséges)";
+        self.btnMentes.isEnabled = true;
     }
 }
