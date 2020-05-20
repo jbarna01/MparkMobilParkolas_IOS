@@ -2,14 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Parkolasom.pdf"
+      "filename" : "Parkolasom25.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Parkolasom50.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Parkolasom75.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "preserves-vector-representation" : true
   }
 }
