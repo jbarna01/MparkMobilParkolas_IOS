@@ -29,13 +29,14 @@ class ProfilomController: UIViewController, PlateChangeControllerDelegata {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
+        //tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let tabbar = tabBarController as! TabBarController;
         btnChangePlate.setTitle(utils.plateConvert(plate: String(describing: tabbar.aktPlate)), for: .normal)
         labelPhoneNumber.text = utils.phoneNumberConvert(phoneNumber: String(describing: tabbar.phoneNumber));
+        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
         zoneSwitchBeallitasa();
     }
     

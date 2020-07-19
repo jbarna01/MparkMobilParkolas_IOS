@@ -42,18 +42,32 @@ class Utils {
         return convertPhoneNumber
     }
     
-    func parkolasiIdoKiszamolasa(date: String) -> String {
+    func parkolasiIdoKiszamolasa(startDatum: String) -> String {
+        var PREFIX = ""
         let calendar = Calendar.current
         let aktualisDatum = Date()
-        let startDatumSec = calendar.date(from: DateComponents(calendar: calendar, year: 2020, month: 04, day: 22, hour: 23, minute: 30, second: 00))
+        
+        let isoStartDatum = startDatum
+        let dateFormatterStartDatum = ISO8601DateFormatter()
+        let startDatum = dateFormatterStartDatum.date(from:isoStartDatum)!
+        let startDatumComp = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDatum)
+        let startDatumSec = calendar.date(from: startDatumComp)
         let masodpercKulonbseg = calendar.dateComponents([.second], from: startDatumSec!, to: aktualisDatum)
-        let masodpercek = masodpercKulonbseg.second
+        var masodpercek = masodpercKulonbseg.second
+        
+        if masodpercek! < 0 {
+            masodpercek = masodpercek! * (-1)
+            PREFIX = "- "
+         } else {
+            PREFIX = ""
+        }
 
         let pOra = masodpercek! / 3600
         let pPerc = (masodpercek! - (pOra * 3600)) / 60
         let pSec = (masodpercek! - (pOra * 3600) - (pPerc * 60))
         
-        return digitConvert(szam: pOra) + ":" + digitConvert(szam: pPerc) + ":" + digitConvert(szam: pSec)
+        //return PREFIX + digitConvert(szam: pOra) + ":" + digitConvert(szam: pPerc) + ":" + digitConvert(szam: pSec) + POSTFIX
+        return PREFIX + digitConvert(szam: pOra) + ":" + digitConvert(szam: pPerc) + ":" + digitConvert(szam: pSec)
     }
     
     func digitConvert(szam: Int) -> String {

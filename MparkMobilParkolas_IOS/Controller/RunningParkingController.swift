@@ -30,8 +30,13 @@ class RunningParkingController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad();
+        //tabBarBeallitas(parkolokBool: false, parkolasomBool: true, ProfilomBool: false);
+        //runningParking();
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         tabBarBeallitas(parkolokBool: false, parkolasomBool: true, ProfilomBool: false);
-        runningParking();
+        runningParking()
     }
     
     @IBAction func btnFrissites(_ sender: Any) {
@@ -49,7 +54,8 @@ class RunningParkingController: UIViewController {
         if Reachability.isConnectedToNetwork() == true {
             phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
             apiKey = (defaults.string(forKey: "apiKey"))!;
-            parkingId = (String)(describing: tabbar.parkingId);
+            //parkingId = (String)(describing: tabbar.parkingId);
+            parkingId = (defaults.string(forKey: "parkingId"))!;
             amount = (String)(describing: tabbar.amount);
             
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
@@ -61,9 +67,17 @@ class RunningParkingController: UIViewController {
             
             switch runningParkingData.result {
             case "OK":
-                labelElerhetoEgyenleg.text = amount == "-1" ? "" : amount;
-                labelParkolasiIdo.text = utils.parkolasiIdoKiszamolasa(date: runningParkingData.start!)
-                labelFelhasznaltEgyenleg.text = runningParkingData.zoneCost! + " FT";
+                let amountFt = amount + " Ft"
+                labelElerhetoEgyenleg.text = amount == "-1" ? "" : amountFt
+                let parkolasiIdo = utils.parkolasiIdoKiszamolasa(startDatum: runningParkingData.start!)
+                let prefix = parkolasiIdo[parkolasiIdo.startIndex..<parkolasiIdo.index(parkolasiIdo.startIndex, offsetBy: 1)]
+                if prefix == "-" {
+                    let alertVC = alertService.alert(title: "Hiba", szoveg: "A parkolás jövőbeli idpontban indul!");
+                    present(alertVC, animated: true);
+                }
+                labelParkolasiIdo.text = parkolasiIdo
+                
+                labelFelhasznaltEgyenleg.text = runningParkingData.parkingCost! + " FT";
                 
                 // Visszaállítjuk a VIEW elemek láthatóságát
                 self.itemsEnableDisable(isEnable: true);
@@ -95,13 +109,14 @@ class RunningParkingController: UIViewController {
     }
     
     func stopParking() {
-        let tabbar = tabBarController as! TabBarController;
+        //let tabbar = tabBarController as! TabBarController;
         
         // Leellenőrizzük van-e Internet kapcsolat
         if Reachability.isConnectedToNetwork() == true {
             self.phoneNumber = (defaults.string(forKey: "phoneNumber"))!;
             self.apiKey = (defaults.string(forKey: "apiKey"))!;
-            self.parkingId = (String)(describing: tabbar.parkingId);
+            //self.parkingId = (String)(describing: tabbar.parkingId);
+            parkingId = (defaults.string(forKey: "parkingId"))!;
             
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
@@ -114,9 +129,8 @@ class RunningParkingController: UIViewController {
             case "OK":
                 // Visszaállítjuk a VIEW elemek láthatóságát
                 self.itemsEnableDisable(isEnable: true);
-                let alertVC = alertService.alert(title: "Információ", szoveg: Konst.info.info_012);
-                present(alertVC, animated: true);
-                self.dismiss(animated: true, completion: nil);
+                defaults.set("", forKey: "parkingId");
+                self.tabBarController?.selectedIndex = Konst.tabbar.parkolok;
             case "-1001":
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1001 );
                 present(alertVC, animated: true);

@@ -63,11 +63,12 @@ class ParkingService {
         let url = createURLWithComponentsstartParkin(paramPhoneNumber: phoneNumber, paramApiKey: apiKey, paramAktPlate: aktPlate, paramZone: zoneCode)!
 
         let request = NSMutableURLRequest(url: url as URL)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
 
         let session = URLSession(configuration: .default);
         
-        // Meghívjuk a GET metódust
+        // Meghívjuk a POST metódust
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
                 startParkingResponse = StartParkingResponse(parkingId: "-1", duration: "", parkingCost: "", zoneCost: "", result: "-9999");
@@ -143,7 +144,7 @@ class ParkingService {
         let queryAktPlate = NSURLQueryItem(name: "plate", value: paramAktPlate);
         let queryZone = NSURLQueryItem(name: "zone", value: paramZone);
         urlComponents.queryItems = [queryApiKey as URLQueryItem, queryPhoneNumber as URLQueryItem, queryAktPlate as URLQueryItem, queryZone as URLQueryItem]
-        
+        print("33");
         return urlComponents.url as NSURL?
     }
     

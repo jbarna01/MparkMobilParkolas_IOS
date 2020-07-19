@@ -42,6 +42,8 @@ class TabBarController: UITabBarController {
         if getAccountData.parkingId == "-1" {
             return false;
         } else {
+            self.amount = getAccountData.amount!;
+            defaults.set(getAccountData.parkingId!, forKey: "parkingId");
             return true;
         }
     }

@@ -59,7 +59,7 @@ class RunningParkingServices {
         
         let request = NSMutableURLRequest(url: url as URL);
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"); //Optional
-        request.httpMethod = "GET";
+        request.httpMethod = "POST";
         
         let session = URLSession(configuration: .default);
         

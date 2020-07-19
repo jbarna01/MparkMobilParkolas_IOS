@@ -30,10 +30,11 @@ class ParkingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
+        //tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
     }
    
     override func viewDidAppear(_ animated: Bool) {
+        tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
         accountAdatokLekerese();
     }
     
@@ -55,14 +56,15 @@ class ParkingController: UIViewController {
             
             // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             let getAccountData = parkingService.getAccountDataGET(phoneNumber: phoneNumber, apiKey: apiKey);
-            
+            indikatorLeallitas();
             switch getAccountData.result {
             case "OK":
                 tabbar.aktPlate = getAccountData.plate!;
                 tabbar.amount = getAccountData.amount!;
                 if getAccountData.parkingId != "-1" {
                     // Amennyiben van futó parkolás, úgy a parkingID mentése után átirányítjuk a Parkolásom oldalra.
-                    tabbar.parkingId = getAccountData.parkingId!;
+                    //tabbar.parkingId = getAccountData.parkingId!;
+                    defaults.set(getAccountData.parkingId!, forKey: "parkingId");
                     self.tabBarController?.selectedIndex = Konst.tabbar.parkolasom;
                 } else {
                     // Megjelenítjük az aktuális rendszámot
@@ -117,13 +119,16 @@ class ParkingController: UIViewController {
                     let tabbar = tabBarController as! TabBarController;
                     // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
                     itemsEnableDisable(isEnable: false);
-
+                    indikatorInditasa()
                     let startParkingData = parkingService.startParkinPOST(phoneNumber: phoneNumber, apiKey: apiKey, aktPlate: String(describing: tabbar.aktPlate), zoneCode: zoneCode);
+                    indikatorLeallitas()
                     switch startParkingData.result {
                     case "OK":
                         // Bár jönnek vissza adatok de nem kell menteni mert a Parkolásom oldalt egyből lekérjük újra parkolási adatokat
+                        //tabbar.parkingId = startParkingData.parkingId!;
+                        defaults.set(startParkingData.parkingId!, forKey: "parkingId");
                         if isRemmemberZone {defaults.set(zoneCode, forKey: "storeZone");};
-                        self.tabBarController?.selectedIndex = Konst.tabbar.parkolok;
+                        self.tabBarController?.selectedIndex = Konst.tabbar.parkolasom;
                     case "-1001":
                         // Mobil alkalmazás használata nem engedélyezett
                         let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_1001 );
