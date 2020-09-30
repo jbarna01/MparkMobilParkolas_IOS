@@ -12,7 +12,7 @@
         <!--Question Yes No Controller-->
         <scene sceneID="BdG-ZY-Ia1">
             <objects>
-                <viewController storyboardIdentifier="QuestionYesNoVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="E73-0H-tkM" customClass="QuestionYesNoController" customModule="MparkMobilParkolas_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionYesNoVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="E73-0H-tkM" customClass="QuestionYesNoController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mrA-Vv-vvK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

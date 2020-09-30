@@ -26,11 +26,9 @@ class ParkingController: UIViewController {
     let alertService = AlertService();
     
     let defaults = UserDefaults.standard;
-    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tabBarBeallitas(parkolokBool: true, parkolasomBool: false, ProfilomBool: true);
     }
    
     override func viewDidAppear(_ animated: Bool) {
@@ -52,11 +50,11 @@ class ParkingController: UIViewController {
 
             // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
             itemsEnableDisable(isEnable: false);
-            indikatorInditasa();
+            
             
             // Ellenőrizzük, a felhasznnáló adatait. (Rendszám, és, hogy fut-e parkolás)
             let getAccountData = parkingService.getAccountDataGET(phoneNumber: phoneNumber, apiKey: apiKey);
-            indikatorLeallitas();
+
             switch getAccountData.result {
             case "OK":
                 tabbar.aktPlate = getAccountData.plate!;
@@ -96,7 +94,6 @@ class ParkingController: UIViewController {
                 let alertVC = alertService.alert(title: "Hiba", szoveg: Konst.error.err_9999 );
                 present(alertVC, animated: true);
             }
-            indikatorLeallitas();
         } else {
             let alertVC = alertService.alert(title: "Nincskapcsolat!", szoveg: Konst.info.info_011 );
             present(alertVC, animated: true);
@@ -119,9 +116,9 @@ class ParkingController: UIViewController {
                     let tabbar = tabBarController as! TabBarController;
                     // Amíg nem töltődnek be az adatok, addig minden képernyő elemet letiltunk.
                     itemsEnableDisable(isEnable: false);
-                    indikatorInditasa()
+                    
                     let startParkingData = parkingService.startParkinPOST(phoneNumber: phoneNumber, apiKey: apiKey, aktPlate: String(describing: tabbar.aktPlate), zoneCode: zoneCode);
-                    indikatorLeallitas()
+                    
                     switch startParkingData.result {
                     case "OK":
                         // Bár jönnek vissza adatok de nem kell menteni mert a Parkolásom oldalt egyből lekérjük újra parkolási adatokat
@@ -188,25 +185,6 @@ class ParkingController: UIViewController {
     func itemsEnableDisable(isEnable: Bool) {
         self.txtZonaKod.isEnabled = isEnable;
         self.btnParkolasIndatasa.isEnabled = isEnable;
-    }
-    
-    // A várokozást jelző "ikon" indítása
-    func indikatorInditasa() {
-        
-        activityIndicator.center = self.view.center;
-        activityIndicator.hidesWhenStopped = true;
-        if #available(iOS 13.0, *) {
-            activityIndicator.style = UIActivityIndicatorView.Style.medium
-        } else {
-            // Fallback on earlier versions
-        };
-        view.addSubview(activityIndicator);
-        activityIndicator.startAnimating();
-    }
-    
-    // A várokozást jelző "ikon" indítása
-    func indikatorLeallitas() {
-        activityIndicator.stopAnimating();
     }
     
     // Virtuális billentyűzet megjelenítése a text mezőbe történő kattintáskor
