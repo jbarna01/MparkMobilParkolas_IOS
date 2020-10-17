@@ -53,7 +53,7 @@
 		84527E2D24427329002882B1 /* PlateChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateChangeService.swift; sourceTree = "<group>"; };
 		845B10CD2433E2FD0041B1F9 /* ParkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingController.swift; sourceTree = "<group>"; };
 		845B10CF2433E3200041B1F9 /* ParkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingService.swift; sourceTree = "<group>"; };
-		846F965624295A1500936977 /* Mpark Parkolas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mpark Parkolas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		846F965624295A1500936977 /* Mpark Parkolás.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mpark Parkolás.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846F965924295A1500936977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846F965B24295A1500936977 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		846F965D24295A1500936977 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		846F965724295A1500936977 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				846F965624295A1500936977 /* Mpark Parkolas.app */,
+				846F965624295A1500936977 /* Mpark Parkolás.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			);
 			name = MparkMobilParkolas_IOS;
 			productName = MparkMobilParkolas_IOS;
-			productReference = 846F965624295A1500936977 /* Mpark Parkolas.app */;
+			productReference = 846F965624295A1500936977 /* Mpark Parkolás.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -542,7 +542,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.econsultkft.MparkMobilParkolasIOS;
-				PRODUCT_NAME = "Mpark Parkolas";
+				PRODUCT_NAME = "Mpark Parkolás";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -562,7 +562,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = hu.econsultkft.MparkMobilParkolasIOS;
-				PRODUCT_NAME = "Mpark Parkolas";
+				PRODUCT_NAME = "Mpark Parkolás";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
