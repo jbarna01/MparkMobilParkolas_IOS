@@ -12,7 +12,7 @@
         <!--Start View-->
         <scene sceneID="MP8-yN-cQu">
             <objects>
-                <viewController title="Start View" id="ivR-DP-Dzo" customClass="ViewController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Start View" id="ivR-DP-Dzo" customClass="ViewController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="REE-Cm-LaO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
         <!--Parkolásom-->
         <scene sceneID="DOW-3A-QlR">
             <objects>
-                <viewController id="HeQ-Ll-JYS" customClass="RunningParkingController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HeQ-Ll-JYS" customClass="RunningParkingController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j95-vg-2Pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,7 @@
         <!--Parkolok!-->
         <scene sceneID="juG-IO-n9v">
             <objects>
-                <viewController id="QPp-Do-ySM" customClass="ParkingController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QPp-Do-ySM" customClass="ParkingController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="deK-1m-tl8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,7 +322,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="R3O-WO-npG">
             <objects>
-                <tabBarController id="xni-6t-spt" customClass="TabBarController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="xni-6t-spt" customClass="TabBarController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mPd-cB-qJi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -342,7 +342,7 @@
         <!--Registration Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RegistrationController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RegistrationController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,7 +430,7 @@
         <!--Profilom-->
         <scene sceneID="1BC-E1-VU9">
             <objects>
-                <viewController id="eGw-C9-gjX" customClass="ProfilomController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eGw-C9-gjX" customClass="ProfilomController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Nz-VZ-7iF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -565,7 +565,7 @@
         <!--Plate Change Controller-->
         <scene sceneID="SUo-pz-JCJ">
             <objects>
-                <viewController id="rhZ-DG-OBf" customClass="PlateChangeController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rhZ-DG-OBf" customClass="PlateChangeController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4aU-mT-Etu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

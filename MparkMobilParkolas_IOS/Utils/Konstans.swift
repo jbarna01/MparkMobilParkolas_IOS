@@ -22,7 +22,7 @@ struct Konst {
         static let onePlateCell: String = "onePlateCell";
     }
     struct szoveg {
-        static let reg_tajekoztato: String = "SMS üzenetben küldtük Önnek a regisztrációs kódot. Kérjük írja be, és nyomjon a Belépés gombra!"
+        static let reg_tajekoztato: String = "SMS-üzenetben küldtük Önnek a regisztrációs kódot. Kérjük írja be, és nyomjon a Belépés gombra!"
     }
     struct paceholder {
         static let regisztraciosKod: String = "Regisztrációs kód";
