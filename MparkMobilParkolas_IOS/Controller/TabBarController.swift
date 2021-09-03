@@ -13,7 +13,8 @@ class TabBarController: UITabBarController {
     var phoneNumber: String = "";
     var aktPlate: String = "";
     var parkingId: String = "";
-    var amount: String = ""
+    var amount: String = "";
+    var zoneCodde: String = "";
     
     let parkingService = ParkingService();
     let defaults = UserDefaults.standard;

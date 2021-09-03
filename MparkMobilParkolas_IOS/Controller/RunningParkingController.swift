@@ -49,6 +49,7 @@ class RunningParkingController: UIViewController {
     
     func runningParking() {
         let tabbar = tabBarController as! TabBarController;
+        zonaKod.text = defaults.string(forKey: "aktZoneKod");
         
         // Leellenőrizzük van-e Internet kapcsolat
         if Reachability.isConnectedToNetwork() == true {

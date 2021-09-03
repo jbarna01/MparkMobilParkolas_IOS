@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ivR-DP-Dzo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ivR-DP-Dzo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Start View-->
         <scene sceneID="MP8-yN-cQu">
             <objects>
-                <viewController title="Start View" id="ivR-DP-Dzo" customClass="ViewController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Start View" id="ivR-DP-Dzo" customClass="ViewController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="REE-Cm-LaO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +34,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1a6-hk-l5l"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="y4y-Yh-q2Q" firstAttribute="leading" secondItem="1a6-hk-l5l" secondAttribute="leading" constant="50" id="JmT-lr-Chr"/>
                             <constraint firstItem="X3Q-MK-gL0" firstAttribute="leading" secondItem="1a6-hk-l5l" secondAttribute="leading" id="Keh-0z-CZz"/>
@@ -46,7 +48,6 @@
                             <constraint firstItem="ra2-nU-zbG" firstAttribute="leading" secondItem="1a6-hk-l5l" secondAttribute="leading" constant="32" id="o4Z-tc-Mca"/>
                             <constraint firstItem="1a6-hk-l5l" firstAttribute="trailing" secondItem="y4y-Yh-q2Q" secondAttribute="trailing" constant="50" id="pBf-Ey-4cR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1a6-hk-l5l"/>
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="startToRegistration" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="iH6-WM-7ai"/>
@@ -60,7 +61,7 @@
         <!--Parkolásom-->
         <scene sceneID="DOW-3A-QlR">
             <objects>
-                <viewController id="HeQ-Ll-JYS" customClass="RunningParkingController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HeQ-Ll-JYS" customClass="RunningParkingController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j95-vg-2Pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,7 +84,7 @@
                                 <color key="textColor" name="SzovegSzinek"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000 FT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSc-Iy-ktQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 FT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSc-Iy-ktQ">
                                 <rect key="frame" x="20" y="179.5" width="335" height="29.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vSc-Iy-ktQ" secondAttribute="height" multiplier="34:3" id="eNZ-hg-usM"/>
@@ -110,7 +111,7 @@
                                 <color key="textColor" name="SzovegSzinek"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 FT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uI4-AW-rZu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 FT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uI4-AW-rZu">
                                 <rect key="frame" x="20" y="374" width="335" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uI4-AW-rZu" secondAttribute="height" multiplier="187:14" id="X2j-qn-m8I"/>
@@ -128,7 +129,7 @@
                                 <color key="textColor" name="SzovegSzinek"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4001" textAlignment="center" minimumFontSize="17" background="zonaSzovegMezo" translatesAutoresizingMaskIntoConstraints="NO" id="QzJ-Q9-eTo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0000" textAlignment="center" minimumFontSize="17" background="zonaSzovegMezo" translatesAutoresizingMaskIntoConstraints="NO" id="QzJ-Q9-eTo">
                                 <rect key="frame" x="132" y="447" width="111" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QzJ-Q9-eTo" secondAttribute="height" multiplier="150:77" id="E8a-8f-OFv"/>
@@ -137,7 +138,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahw-v3-cbD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahw-v3-cbD">
                                 <rect key="frame" x="243" y="481.5" width="134" height="95.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ahw-v3-cbD" secondAttribute="height" multiplier="171:122" id="pbP-Ba-E1J"/>
@@ -148,18 +149,19 @@
                                     <action selector="btnLeallitas:" destination="HeQ-Ll-JYS" eventType="touchUpInside" id="RXR-Vk-yvQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="352-HH-L4g">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="352-HH-L4g">
                                 <rect key="frame" x="156" y="229" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="352-HH-L4g" secondAttribute="height" multiplier="1:1" id="Pcc-4E-0mx"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="frissItes"/>
+                                <state key="normal" image="frissItEs" backgroundImage="frissItes"/>
                                 <connections>
                                     <action selector="btnFrissites:" destination="HeQ-Ll-JYS" eventType="touchUpInside" id="78J-Ua-eEI"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QUz-bp-02H"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uI4-AW-rZu" firstAttribute="top" secondItem="9iT-9u-HiT" secondAttribute="bottom" id="56F-8V-hwW"/>
                             <constraint firstItem="vSc-Iy-ktQ" firstAttribute="top" secondItem="msd-w8-YUl" secondAttribute="bottom" id="5d0-Zt-qBk"/>
@@ -196,7 +198,6 @@
                             <constraint firstItem="NeE-sT-ES6" firstAttribute="leading" secondItem="j95-vg-2Pa" secondAttribute="leading" id="y0T-uq-aJP"/>
                             <constraint firstAttribute="trailing" secondItem="Ahw-v3-cbD" secondAttribute="trailing" constant="-2" id="y8h-TN-Mxq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="QUz-bp-02H"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Parkolásom" image="Parkolasom" id="veg-eo-ghR">
                         <color key="badgeColor" name="Piros"/>
@@ -217,7 +218,7 @@
         <!--Parkolok!-->
         <scene sceneID="juG-IO-n9v">
             <objects>
-                <viewController id="QPp-Do-ySM" customClass="ParkingController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QPp-Do-ySM" customClass="ParkingController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="deK-1m-tl8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,7 +268,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmQ-N1-rlJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmQ-N1-rlJ">
                                 <rect key="frame" x="247" y="484.5" width="130" height="92.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tmQ-N1-rlJ" secondAttribute="height" multiplier="171:122" id="hSn-y9-fmg"/>
@@ -279,7 +280,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yPG-rf-KSk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="krJ-ao-sHh" firstAttribute="top" secondItem="loj-KG-BeG" secondAttribute="bottom" constant="40" id="2MN-9E-PPm"/>
                             <constraint firstItem="qHF-xC-pYU" firstAttribute="leading" secondItem="deK-1m-tl8" secondAttribute="leading" id="80z-bw-1Up"/>
@@ -304,7 +306,6 @@
                             <constraint firstItem="krJ-ao-sHh" firstAttribute="leading" secondItem="yPG-rf-KSk" secondAttribute="leading" constant="20" id="nRs-qw-5fc"/>
                             <constraint firstItem="tUk-Ah-apJ" firstAttribute="leading" secondItem="yPG-rf-KSk" secondAttribute="leading" constant="20" id="zxa-AG-HZq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yPG-rf-KSk"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Parkolok!" image="Parkolok" id="3mH-FC-EAz">
                         <color key="badgeColor" name="Piros"/>
@@ -322,7 +323,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="R3O-WO-npG">
             <objects>
-                <tabBarController id="xni-6t-spt" customClass="TabBarController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="xni-6t-spt" customClass="TabBarController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mPd-cB-qJi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -342,7 +343,7 @@
         <!--Registration Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RegistrationController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RegistrationController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,7 +386,7 @@
                                 <color key="textColor" name="SzovegSzinek"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-Rl-6Aa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-Rl-6Aa">
                                 <rect key="frame" x="243" y="481.5" width="134" height="95.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oJF-Rl-6Aa" secondAttribute="height" multiplier="171:122" id="O6i-Oz-GKL"/>
@@ -397,7 +398,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mga-TM-sqD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="0JM-uG-qwl"/>
                             <constraint firstItem="LYW-ar-uLa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="9Gy-HN-8Sr"/>
@@ -415,7 +417,6 @@
                             <constraint firstItem="wds-Ar-Y9O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="r8M-gC-j41"/>
                             <constraint firstItem="wds-Ar-Y9O" firstAttribute="top" secondItem="Mga-TM-sqD" secondAttribute="bottom" constant="20" id="v3Q-cv-VHu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="btnBelepes" destination="oJF-Rl-6Aa" id="R65-8J-U4Z"/>
@@ -430,7 +431,7 @@
         <!--Profilom-->
         <scene sceneID="1BC-E1-VU9">
             <objects>
-                <viewController id="eGw-C9-gjX" customClass="ProfilomController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eGw-C9-gjX" customClass="ProfilomController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Nz-VZ-7iF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -514,7 +515,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNE-jx-Y6B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNE-jx-Y6B">
                                 <rect key="frame" x="-3" y="480.5" width="135" height="96.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RNE-jx-Y6B" secondAttribute="height" multiplier="171:122" id="6m7-rt-gA2"/>
@@ -526,7 +527,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1Ep-TX-Tqw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XpB-hz-xCm" secondAttribute="trailing" id="0aJ-Nr-84O"/>
                             <constraint firstItem="RNE-jx-Y6B" firstAttribute="leading" secondItem="1Nz-VZ-7iF" secondAttribute="leading" constant="-3" id="1ax-UM-Exh"/>
@@ -545,7 +547,6 @@
                             <constraint firstItem="U9K-RA-DMy" firstAttribute="top" secondItem="1Ep-TX-Tqw" secondAttribute="top" constant="30" id="tdb-JD-bAJ"/>
                             <constraint firstAttribute="bottom" secondItem="XpB-hz-xCm" secondAttribute="bottom" id="zxv-80-bGB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Ep-TX-Tqw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profilom" image="Profilom" id="M37-Kx-n67">
                         <color key="badgeColor" name="Piros"/>
@@ -565,7 +566,7 @@
         <!--Plate Change Controller-->
         <scene sceneID="SUo-pz-JCJ">
             <objects>
-                <viewController id="rhZ-DG-OBf" customClass="PlateChangeController" customModule="Mpark_Parkolas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rhZ-DG-OBf" customClass="PlateChangeController" customModule="Mpark_Parkolás" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4aU-mT-Etu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -600,13 +601,13 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mGM-Br-mHc">
                                 <rect key="frame" x="20" y="277.5" width="335" height="266"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mGM-Br-mHc" secondAttribute="height" multiplier="34:27" id="KN4-LY-gWw"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="onePlateCell" id="NRV-2j-LVl">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="335" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NRV-2j-LVl" id="LrZ-nZ-TL7">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
@@ -619,7 +620,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Nlr-yX-VC9">
                                 <rect key="frame" x="20" y="597" width="335" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hp0-vz-d3u">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hp0-vz-d3u">
                                         <rect key="frame" x="0.0" y="0.0" width="142.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="HZv-WR-HfD"/>
@@ -633,7 +634,7 @@
                                             <action selector="btnVisszaTapped:" destination="rhZ-DG-OBf" eventType="touchUpInside" id="ZEM-b1-lg6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qt5-Qt-79L">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qt5-Qt-79L">
                                         <rect key="frame" x="192.5" y="0.0" width="142.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="5wc-Lo-Qst"/>
@@ -658,7 +659,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4s5-il-SPl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4s5-il-SPl" firstAttribute="bottom" secondItem="Nlr-yX-VC9" secondAttribute="bottom" constant="30" id="0lH-97-upx"/>
                             <constraint firstItem="4s5-il-SPl" firstAttribute="trailing" secondItem="Nlr-yX-VC9" secondAttribute="trailing" constant="20" id="7gi-sH-aiv"/>
@@ -679,7 +681,6 @@
                             <constraint firstItem="XZX-zI-9zy" firstAttribute="leading" secondItem="4s5-il-SPl" secondAttribute="leading" constant="20" id="yGj-x1-DKY"/>
                             <constraint firstItem="5Cp-yU-1jg" firstAttribute="top" secondItem="4s5-il-SPl" secondAttribute="top" constant="30" id="yow-8g-bBf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4s5-il-SPl"/>
                     </view>
                     <connections>
                         <outlet property="btnMentes" destination="Qt5-Qt-79L" id="vHZ-4y-5gx"/>
@@ -702,6 +703,7 @@
         <image name="Profilom" width="25" height="25"/>
         <image name="balPirosCsik" width="114" height="250"/>
         <image name="belepesGomb" width="41" height="30"/>
+        <image name="frissItEs" width="116" height="116"/>
         <image name="frissItes" width="116" height="116"/>
         <image name="inditasGomb" width="39" height="30"/>
         <image name="induloOldalHatter" width="114" height="246"/>
@@ -731,5 +733,8 @@
         <namedColor name="Zold">
             <color red="0.20392156862745098" green="0.7686274509803922" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

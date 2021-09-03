@@ -123,7 +123,9 @@ class ParkingController: UIViewController {
                     case "OK":
                         // Bár jönnek vissza adatok de nem kell menteni mert a Parkolásom oldalt egyből lekérjük újra parkolási adatokat
                         //tabbar.parkingId = startParkingData.parkingId!;
+                        
                         defaults.set(startParkingData.parkingId!, forKey: "parkingId");
+                        defaults.set(zoneCode, forKey: "aktZoneKod");
                         if isRemmemberZone {defaults.set(zoneCode, forKey: "storeZone");};
                         self.tabBarController?.selectedIndex = Konst.tabbar.parkolasom;
                     case "-1001":
